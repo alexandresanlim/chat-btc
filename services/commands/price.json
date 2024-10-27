@@ -1,5 +1,8 @@
 {
   "url": "https://mempool.space/api/v1/prices",
   "query": "{fiat}",
-  "userId": "mempool"
+  "userId": "mempool",
+  "parameters": {
+    "defautl": "USD"
+  }
 }
