@@ -3,6 +3,9 @@
   "query": "{fiat}",
   "userId": "mempool",
   "parameters": {
-    "defautl": "USD"
+    "default": "USD"
+  },
+  "answer":{
+    "us": "`The actual Bitcoin price in ${parameters.default} is {price} {parameters.default}`"
   }
 }
