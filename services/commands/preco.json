@@ -5,6 +5,7 @@
     "default": "USD"
   },
   "answer":{
+    "language": "pt",
     "success": "O preço atual do Bitcoin em {parameter} é {value} {parameter}",
     "error": "😞 Nenhum preço foi encontrado, por favor, tente novamente"
   }

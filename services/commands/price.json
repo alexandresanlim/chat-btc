@@ -5,6 +5,7 @@
     "default": "USD"
   },
   "answer":{
+    "language": "us",
     "success": "The actual Bitcoin price in {parameter} is {value} {parameter}",
     "error": "😞 No one Bitcoin price was found, please try again"
   }
