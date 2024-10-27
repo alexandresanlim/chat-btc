@@ -1,0 +1,11 @@
+{
+  "url": "https://mempool.space/api/v1/prices",
+  "userId": "mempool",
+  "parameters": {
+    "default": "USD"
+  },
+  "answer":{
+    "success": "The actual Bitcoin price in {parameter} is {value} {parameter}",
+    "error": "😞 No one Bitcoin price was found, please try again"
+  }
+}

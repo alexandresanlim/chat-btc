@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "chat-btc",
+    "name": "ChatBTC",
     "slug": "chat-btc",
-    "version": "1.0.0",
+    "version": "0.0.1",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
@@ -19,7 +19,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "io.github.aichatbtc"
     },
     "web": {
       "bundler": "metro",
@@ -31,6 +32,11 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "eas": {
+        "projectId": "ed28b44a-4e7c-44e7-9dbd-ec79ac910754"
+      }
     }
   }
 }
