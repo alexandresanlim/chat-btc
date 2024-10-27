@@ -6,6 +6,6 @@
     "default": "USD"
   },
   "answer":{
-    "us": "`The actual Bitcoin price in ${parameters.default} is {price} {parameters.default}`"
+    "us": "The actual Bitcoin price in {parameter} is {value} {parameter}"
   }
 }
