@@ -2,7 +2,7 @@
   "url": "https://api.coincap.io/v2/assets/{0}",
   "userId": "mempool",
   "parameters": {
-    "default": "USD"
+    "default": "bitcoin"
   },
   "answer":{
     "language": "pt",
