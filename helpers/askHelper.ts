@@ -1,19 +1,18 @@
-export const getCommand = (text: string): string => {
-  return text.split(" ")[0];
-};
+export const getCommand = (text: string) => {
+  const splitText = text.split(" ");
 
-export const getParameter = (text: string): string => {
-  if (text.includes("--")) {
-    return text.split("--")[1];
-  } else if (text.includes("-")) {
-    return text.split("-")[1];
-  }
-  return "";
+  return {
+    firt: splitText?.[0],
+    secondary: splitText?.[1],
+    third: splitText?.[2],
+  };
 };
 
 export const getCommandAndParameter = (text: string) => {
+  const cmd = getCommand(text);
+
   return {
-    command: getCommand(text).toLocaleLowerCase(),
-    parameter: getParameter(text).toUpperCase(),
+    command: cmd.firt.toLocaleLowerCase(),
+    parameter: cmd.secondary,
   };
 };
