@@ -1,11 +1,9 @@
 {
-    "url": "https://mempool.space/api/address/{address}",
+    "url": "https://mempool.space/api/address/{0}",
     "userId": "mempool",
-    "parameters": {
-      "default": "USD"
-    },
     "answer":{
       "language": "us",
+      "loading": "Fetching address data...",
       "success": "Funded txo count [chain_stats.funded_txo_count]\nFunded txo sum [chain_stats.funded_txo_sum]",
       "error": "😞 Not found address info"
     }   
