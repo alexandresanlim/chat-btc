@@ -32,7 +32,8 @@ export default function Index() {
     );
   };
 
-  const answerCommandNotFound = () => {
+  const answerCommandNotFound = (log: string) => {
+    console.log("error", log);
     answerMessage("Command not found");
   };
 
@@ -42,7 +43,7 @@ export default function Index() {
     );
 
     if (!ok || !url) {
-      answerCommandNotFound();
+      answerCommandNotFound(url);
     }
 
     return { ok, url, parameterDefault, answer, userId };
@@ -52,7 +53,7 @@ export default function Index() {
     const { ok, value } = await getValueAsync(url, parameter);
 
     if (!ok || !value) {
-      answerCommandNotFound();
+      answerCommandNotFound(url);
     }
 
     return { ok, value };
@@ -62,7 +63,7 @@ export default function Index() {
     const { ok, id, name, avatar } = await getUserAsync(userId);
 
     if (!ok) {
-      answerCommandNotFound();
+      answerCommandNotFound("getUser");
     }
 
     return { ok, id, name, avatar };
@@ -97,15 +98,16 @@ export default function Index() {
         const { ok: okUser, id, name, avatar } = await getUser(userId);
 
         if (okUser) {
-          user = createUser(id, name, avatar);
+          user = createUser(id, `By: ${name}`, avatar);
         }
       }
 
-      const finalAnswer = getByApiResponse(answer, parameter, value);
+      const finalAnswer = getByApiResponse(answer?.success, parameter, value);
 
       answerMessage(finalAnswer, user);
-    } catch {
-      answerCommandNotFound();
+    } catch (error) {
+      const errorMessage = (error as Error)?.message;
+      answerCommandNotFound("exception " + errorMessage);
     }
   };
 
@@ -133,7 +135,6 @@ export default function Index() {
         renderUsernameOnMessage={true}
         showUserAvatar={true}
         renderAvatarOnTop={true}
-        isStatusBarTranslucentAndroid={false}
       />
     </View>
   );

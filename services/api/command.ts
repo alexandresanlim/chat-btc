@@ -1,4 +1,7 @@
-export const getCommandAsync = async (command: string, location: string = "us") => {
+export const getCommandAsync = async (
+  command: string,
+  location: string = "us"
+) => {
   const url = `https://raw.githubusercontent.com/alexandresanlim/chat-btc/refs/heads/master/services/commands/${command}.json`;
 
   try {
@@ -16,8 +19,11 @@ export const getCommandAsync = async (command: string, location: string = "us") 
       ok: true,
       url: json.url,
       parameterDefault: json?.parameters?.default,
-      answer: json.answer[location],
-      userId: json.userId
+      answer: {
+        success: json.answer.success,
+        error: json.answer.error,
+      },
+      userId: json.userId,
     };
   } catch {
     return {
