@@ -1,12 +1,12 @@
 {
-  "url": "https://mempool.space/api/v1/prices",
+  "url": "https://api.coincap.io/v2/assets/bitcoin",
   "userId": "mempool",
   "parameters": {
     "default": "USD"
   },
-  "answer":{
+  "answer": {
     "language": "us",
-    "success": "The actual Bitcoin price in {parameter} is {value} {parameter}",
+    "success": "The actual Bitcoin price is [data.priceUsd] USD, a change of [data.changePercent24Hr] in the last 24 hours",
     "error": "😞 No one Bitcoin price was found, please try again"
   }
 }
