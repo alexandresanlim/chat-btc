@@ -8,11 +8,15 @@ export const getCommand = (text: string) => {
   };
 };
 
+const replaceSpecialCharacter = (text: string) => {
+  return text.replace(/ç/gi, "c");
+};
+
 export const getCommandAndParameter = (text: string) => {
   const cmd = getCommand(text);
 
   return {
-    command: cmd.firt.toLocaleLowerCase(),
+    command: replaceSpecialCharacter(cmd.firt.toLocaleLowerCase()),
     parameter: cmd.secondary,
   };
 };
