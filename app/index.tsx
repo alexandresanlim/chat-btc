@@ -86,10 +86,16 @@ export default function Index() {
 
       const parameter = parameterSent || parameterDefault;
 
-      const { ok: okValue, value } = await getValue(url, parameter);
+      let valueForResponse;
 
-      if (!okValue) {
-        return;
+      if (url) {
+        const { ok: okValue, value } = await getValue(url, parameter);
+
+        valueForResponse = value;
+
+        if (!okValue) {
+          return;
+        }
       }
 
       let user = getSatoshiUser();
@@ -102,7 +108,11 @@ export default function Index() {
         }
       }
 
-      const finalAnswer = getByApiResponse(answer?.success, parameter, value);
+      const finalAnswer = getByApiResponse(
+        answer?.success,
+        parameter,
+        valueForResponse
+      );
 
       answerMessage(finalAnswer, user);
     } catch (error) {
@@ -124,18 +134,16 @@ export default function Index() {
   }, []);
 
   return (
-    <View style={{ flex: 1 }}>
-      <GiftedChat
-        messages={messages}
-        onSend={(messages) => onSend(messages)}
-        //messageIdGenerator={generateRandomId}
-        user={{
-          _id: "me",
-        }}
-        renderUsernameOnMessage={true}
-        showUserAvatar={true}
-        renderAvatarOnTop={true}
-      />
-    </View>
+    <GiftedChat
+      messages={messages}
+      onSend={(messages) => onSend(messages)}
+      //messageIdGenerator={generateRandomId}
+      user={{
+        _id: "me",
+      }}
+      renderUsernameOnMessage={true}
+      showUserAvatar={true}
+      renderAvatarOnTop={true}
+    />
   );
 }
