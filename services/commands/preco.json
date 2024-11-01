@@ -1,11 +1,10 @@
 {
   "url": "https://api.coincap.io/v2/assets/{0}",
-  "userId": "mempool",
+  "userId": "coincap",
   "parameters": {
     "default": "bitcoin"
   },
   "answer":{
-    "language": "pt",
     "success": "O preço atual do [data.name] é [data.priceUsd] USD, variação de [data.changePercent24Hr] nas últimas 24 horas",
     "error": "😞 Nenhum preço foi encontrado, por favor, tente novamente"
   }

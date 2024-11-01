@@ -5,7 +5,6 @@
     "default": "bitcoin"
   },
   "answer": {
-    "language": "us",
     "success": "The actual [data.name] price is [data.priceUsd] USD, a change of [data.changePercent24Hr] in the last 24 hours",
     "error": "😞 No one Bitcoin price was found, please try again"
   }

@@ -42,7 +42,7 @@ export default function Index() {
       command
     );
 
-    if (!ok || !url) {
+    if (!ok) {
       answerCommandNotFound(url);
     }
 
