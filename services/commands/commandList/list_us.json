@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Price",
+    "value": "price"
+  },
+  {
+    "title": "Address",
+    "value": "address"
+  },
+  {
+    "title": "Difficulty",
+    "value": "difficulty"
+  },
+  {
+    "title": "Code",
+    "value": "code"
+  },
+  {
+    "title": "Analyze images",
+    "value": "c"
+  },
+  {
+    "title": "Surprise me",
+    "value": "c"
+  },
+  {
+    "title": "Brainstorm",
+    "value": "c"
+  },
+  {
+    "title": "Analyze data",
+    "value": "c"
+  },
+  {
+    "title": "Less",
+    "value": "less"
+  }
+]

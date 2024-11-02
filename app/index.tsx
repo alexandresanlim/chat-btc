@@ -23,7 +23,11 @@ import {
 } from "@/helpers/answerHelper";
 import { getCommandAndParameter } from "@/helpers/askHelper";
 
-import { createUser, getSatoshiUser } from "@/helpers/userHelper";
+import {
+  createUser,
+  getChatBTCUser,
+  getSatoshiUser,
+} from "@/helpers/userHelper";
 import { getCommandAsync } from "@/services/api/command";
 import { getUserAsync } from "@/services/api/user";
 import { getValueAsync } from "@/services/api/value";
@@ -47,8 +51,15 @@ import { ScrollView } from "react-native-gesture-handler";
 
 export default function Index() {
   const [messages, setMessages] = useState<IMessage[]>([]);
+  const [currentText, setCurrentText] = useState<string>("");
 
-  useEffect(() => {
+  const setQuickReplies = (isHighlight: boolean) => {
+    const dataHighlight = data.slice(0, 3);
+    dataHighlight.push({
+      title: "More",
+      value: "more",
+    });
+
     setMessages([
       {
         _id: 1,
@@ -57,17 +68,18 @@ export default function Index() {
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
-          values: data,
+          values: isHighlight ? dataHighlight : data,
         },
-        user: {
-          _id: 2,
-          name: "React Native",
-        },
+        user: getChatBTCUser(),
       },
     ]);
+  };
+
+  useEffect(() => {
+    setQuickReplies(true);
   }, []);
 
-  const answerMessage = (message: string, user: User = getSatoshiUser()) => {
+  const answerMessage = (message: string, user: User = getChatBTCUser()) => {
     setMessages((previousMessages) => {
       const filteredItems = previousMessages.filter(
         (item) => !String(item._id).includes("loading")
@@ -77,7 +89,7 @@ export default function Index() {
     });
   };
 
-  const answerLoading = (user: User = getSatoshiUser()) => {
+  const answerLoading = (user: User = getChatBTCUser()) => {
     setMessages((previousMessages) =>
       GiftedChat.append(previousMessages, [getLoadingMessage(user)])
     );
@@ -175,7 +187,7 @@ export default function Index() {
   const onSend = useCallback(async (messages: IMessage[] = []) => {
     const message = messages[0].text;
 
-    console.log("mesage", message);
+    setCurrentText("");
 
     setMessages((previousMessages) =>
       GiftedChat.append(previousMessages, messages)
@@ -192,7 +204,17 @@ export default function Index() {
     <GiftedChat
       messages={messages}
       onSend={(messages) => onSend(messages)}
-      onQuickReply={(reply) => console.log("reply", reply)}
+      onQuickReply={(reply) => {
+        const value = reply[0].value;
+
+        if (value === "more") {
+          setQuickReplies(false);
+          return;
+        }
+
+        setCurrentText(value);
+        console.log("reply", reply);
+      }}
       //messageIdGenerator={generateRandomId}
       user={{
         _id: "me",
@@ -206,6 +228,8 @@ export default function Index() {
       renderAvatar={(props) => renderAvatar(props, colorScheme)}
       keyboardShouldPersistTaps="always"
       placeholder="Message"
+      onInputTextChanged={setCurrentText}
+      text={currentText}
       scrollToBottom={true}
       renderQuickReplies={(props) => renderQuickReplies(props, colorScheme)}
       // renderActions={renderActions}
@@ -213,14 +237,15 @@ export default function Index() {
       // maxComposerHeight={300}
       // renderFooter={renderFooter}
       scrollToBottomComponent={() => renderScrollToBottom(colors.text)}
-      scrollToBottomStyle={{ backgroundColor: colors.scrollBottom, alignSelf: 'center', justifyContent: 'center' }}
+      scrollToBottomStyle={{
+        backgroundColor: colors.scrollBottom,
+        alignSelf: "center",
+        justifyContent: "center",
+      }}
       // renderCustomView={renderCustomView}
       // isCustomViewBottom
       renderBubble={(props) => renderBubble(props, colorScheme)}
       renderMessageText={(props) => renderMessageText(props, colorScheme)}
-      // messagesContainerStyle={{
-      //   backgroundColor: Colors[colorScheme ?? "light"].background,
-      // }}
     />
   );
 }

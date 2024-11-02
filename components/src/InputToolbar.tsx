@@ -5,6 +5,7 @@ import {
   ColorSchemeName,
   Image,
   InputAccessoryView,
+  StatusBar,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -37,7 +38,7 @@ export const renderInputToolbar = (
         paddingBottom: 4,
         marginHorizontal: 8,
         marginLeft: 8,
-        marginBottom: 8,
+        marginBottom: StatusBar.currentHeight,
         // height: 120,
         borderRadius: 32,
         borderColor: colors.background,
@@ -209,43 +210,28 @@ export const renderQuickReplies = (
 
 export const data = [
   {
-    id: "1",
     title: "Create image",
-    icon: "image",
-    color: "#4CAF50",
-    value: "a",
+    value: "price",
   },
   {
-    id: "2",
     title: "Summarize text",
-    icon: "file-document",
-    color: "#FF5722",
-    value: "b",
+    value: "code",
   },
   {
-    id: "3",
     title: "Make a plan",
-    icon: "lightbulb-outline",
-    color: "#FFC107",
-    value: "c",
+    value: "teste",
   },
   {
-    id: "4",
     title: "Help me write",
-    icon: "pencil",
-    color: "#9C27B0",
     value: "c",
   },
   {
-    id: "5",
     title: "Analyze images",
-    icon: "eye",
-    color: "#3F51B5",
     value: "c",
   },
-  { id: "6", title: "Surprise me", icon: "gift", color: "#00BCD4", value: "c" },
-  { id: "7", title: "Brainstorm", icon: "brain", color: "#FFC107", value: "c" },
-  { id: "8", title: "Code", icon: "code-tags", color: "#3F51B5", value: "c" },
+  { title: "Surprise me", value: "c" },
+  { title: "Brainstorm", value: "c" },
+  { title: "Code", value: "c" },
   {
     id: "9",
     title: "Get advice",
@@ -254,10 +240,7 @@ export const data = [
     value: "c",
   },
   {
-    id: "10",
     title: "Analyze data",
-    icon: "chart-bar",
-    color: "#009688",
     value: "c",
   },
 ];
@@ -302,9 +285,7 @@ const renderItem = ({ item }) => (
 );
 
 export const renderScrollToBottom = (color: string) => {
-  return (
-    <Ionicons name='arrow-down' size={16} color={color} />
-  );
+  return <Ionicons name="arrow-down" size={16} color={color} />;
 };
 
 export const renderChatEmpty = (props) => {

@@ -18,3 +18,13 @@ export const getSatoshiUser = () =>
     "Satoshi Nakamoto",
     "https://livecoins.com.br/wp-content/uploads/2018/04/satoshi.jpg"
   );
+
+  export const getChatBTCUser = () =>
+    createUser(
+      "chat-btc",
+      "ChatBTC",
+      "https://github.com/alexandresanlim/chat-btc/blob/master/assets/images/logo/black.png?raw=true"
+    );
+
+
+  
