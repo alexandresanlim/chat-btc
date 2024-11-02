@@ -1,5 +1,4 @@
 import {
-  data,
   renderAccessory,
   renderActions,
   renderChatEmpty,
@@ -48,13 +47,28 @@ import {
 import { Colors } from "@/constants/Colors";
 import { blue } from "react-native-reanimated/lib/typescript/reanimated2/Colors";
 import { ScrollView } from "react-native-gesture-handler";
+import { getCommandListAsync, ICommandData } from "@/services/api/commandList";
 
 export default function Index() {
   const [messages, setMessages] = useState<IMessage[]>([]);
   const [currentText, setCurrentText] = useState<string>("");
+  const [commandList, setCommandList] = useState<ICommandData[]>([]);
+
+  const setCommandListAsync = async () => {
+    answerLoading();
+
+    const returnData = await getCommandListAsync();
+
+    if (!returnData.ok) {
+      return;
+    }
+
+    setCommandList(returnData.data);
+  };
 
   const setQuickReplies = (isHighlight: boolean) => {
-    const dataHighlight = data.slice(0, 3);
+    const dataHighlight = commandList.slice(0, 3);
+
     dataHighlight.push({
       title: "More",
       value: "more",
@@ -68,7 +82,7 @@ export default function Index() {
         quickReplies: {
           type: "radio", // or 'checkbox',
           keepIt: true,
-          values: isHighlight ? dataHighlight : data,
+          values: isHighlight ? dataHighlight : commandList,
         },
         user: getChatBTCUser(),
       },
@@ -76,8 +90,16 @@ export default function Index() {
   };
 
   useEffect(() => {
-    setQuickReplies(true);
+    if (!(commandList?.length > 0)) {
+      setCommandListAsync();
+    }
   }, []);
+
+  useEffect(() => {
+    if (commandList.length > 0) {
+      setQuickReplies(true);
+    }
+  }, [commandList]);
 
   const answerMessage = (message: string, user: User = getChatBTCUser()) => {
     setMessages((previousMessages) => {
@@ -97,7 +119,7 @@ export default function Index() {
 
   const answerCommandNotFound = (log: string) => {
     console.log("error", log);
-    answerMessage("Command not found");
+    answerMessage("Command not found, send help or menu to see command list");
   };
 
   const getCommand = async (command: string) => {
@@ -200,15 +222,45 @@ export default function Index() {
 
   const colors = Colors[colorScheme ?? "light"];
 
+  const checkIsQuickReply = (value: string): boolean => {
+    if (
+      value === "more" ||
+      value === "clean" ||
+      value === "menu" ||
+      value === "help"
+    ) {
+      setQuickReplies(false);
+      return true;
+    }
+
+    if (value === "less") {
+      setQuickReplies(true);
+      return true;
+    }
+
+    return false;
+  };
+
   return (
     <GiftedChat
       messages={messages}
-      onSend={(messages) => onSend(messages)}
-      onQuickReply={(reply) => {
-        const value = reply[0].value;
+      onSend={(messages) => {
+        const value = messages[0].text.toLowerCase();
 
-        if (value === "more") {
-          setQuickReplies(false);
+        const isQuickReply = checkIsQuickReply(value);
+
+        if (isQuickReply) {
+          return;
+        }
+
+        onSend(messages);
+      }}
+      onQuickReply={(reply) => {
+        const value = reply[0].value.toLowerCase();
+
+        const isQuickReply = checkIsQuickReply(value);
+
+        if (isQuickReply) {
           return;
         }
 
