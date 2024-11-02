@@ -1,4 +1,22 @@
 import {
+  data,
+  renderAccessory,
+  renderActions,
+  renderChatEmpty,
+  renderComposer,
+  renderInputToolbar,
+  renderQuickReplies,
+  renderScrollToBottom,
+  renderSend,
+} from "@/components/src/InputToolbar";
+import {
+  renderAvatar,
+  renderBubble,
+  renderCustomView,
+  renderFooter,
+  renderMessageText,
+} from "@/components/src/MessageContainer";
+import {
   getByApiResponse,
   getLoadingMessage,
   getMessage,
@@ -10,11 +28,44 @@ import { getCommandAsync } from "@/services/api/command";
 import { getUserAsync } from "@/services/api/user";
 import { getValueAsync } from "@/services/api/value";
 import React, { useState, useCallback, useEffect } from "react";
-import { KeyboardAvoidingView, Platform, View } from "react-native";
-import { GiftedChat, IMessage, User } from "react-native-gifted-chat";
+import {
+  KeyboardAvoidingView,
+  Platform,
+  Text,
+  useColorScheme,
+  View,
+} from "react-native";
+import {
+  GiftedChat,
+  IMessage,
+  InputToolbar,
+  User,
+} from "react-native-gifted-chat";
+import { Colors } from "@/constants/Colors";
+import { blue } from "react-native-reanimated/lib/typescript/reanimated2/Colors";
+import { ScrollView } from "react-native-gesture-handler";
 
 export default function Index() {
   const [messages, setMessages] = useState<IMessage[]>([]);
+
+  useEffect(() => {
+    setMessages([
+      {
+        _id: 1,
+        text: "What can I help with?",
+        createdAt: new Date(),
+        quickReplies: {
+          type: "radio", // or 'checkbox',
+          keepIt: true,
+          values: data,
+        },
+        user: {
+          _id: 2,
+          name: "React Native",
+        },
+      },
+    ]);
+  }, []);
 
   const answerMessage = (message: string, user: User = getSatoshiUser()) => {
     setMessages((previousMessages) => {
@@ -133,10 +184,15 @@ export default function Index() {
     await buildAnswer(message);
   }, []);
 
+  const colorScheme = useColorScheme();
+
+  const colors = Colors[colorScheme ?? "light"];
+
   return (
     <GiftedChat
       messages={messages}
       onSend={(messages) => onSend(messages)}
+      onQuickReply={(reply) => console.log("reply", reply)}
       //messageIdGenerator={generateRandomId}
       user={{
         _id: "me",
@@ -144,6 +200,27 @@ export default function Index() {
       renderUsernameOnMessage={true}
       showUserAvatar={true}
       renderAvatarOnTop={true}
+      renderSend={(props) => renderSend(props, colorScheme)}
+      renderComposer={(props) => renderComposer(props, colorScheme)}
+      renderInputToolbar={(props) => renderInputToolbar(props, colorScheme)}
+      renderAvatar={(props) => renderAvatar(props, colorScheme)}
+      keyboardShouldPersistTaps="always"
+      placeholder="Message"
+      scrollToBottom={true}
+      renderQuickReplies={(props) => renderQuickReplies(props, colorScheme)}
+      // renderActions={renderActions}
+      // renderAccessory={(props) => renderAccessory(props, colorScheme)}
+      // maxComposerHeight={300}
+      // renderFooter={renderFooter}
+      scrollToBottomComponent={() => renderScrollToBottom(colors.text)}
+      scrollToBottomStyle={{ backgroundColor: colors.scrollBottom, alignSelf: 'center', justifyContent: 'center' }}
+      // renderCustomView={renderCustomView}
+      // isCustomViewBottom
+      renderBubble={(props) => renderBubble(props, colorScheme)}
+      renderMessageText={(props) => renderMessageText(props, colorScheme)}
+      // messagesContainerStyle={{
+      //   backgroundColor: Colors[colorScheme ?? "light"].background,
+      // }}
     />
   );
 }
