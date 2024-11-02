@@ -1,9 +1,8 @@
 {
-    "url": "https://mempool.space/api/v1/difficulty-adjustment",
-    "userId": "mempool",
-    "answer": {
-      "success": "Follow Bitcoin difficulty adjustment information:\n\n• Progress percent: [progressPercent]\n• Difficulty change: [difficultyChange]\n• Estimated retarget date: [estimatedRetargetDate]\n• Remaining blocks: [remainingBlocks]\n• Remaining time: [remainingTime]\n• Previous retarget: [previousRetarget]\n• Previous time: [previousTime]\n• NextRetarget height: [nextRetargetHeight]\n• Time avg: [timeAvg]\n• Adjusted time avg: [adjustedTimeAvg]\n• Time offset: [timeOffset]\n• Expected blocks: [expectedBlocks]",
-      "error": "😞 No one Bitcoin price was found, please try again"
-    }
+  "url": "https://mempool.space/api/v1/difficulty-adjustment",
+  "userId": "mempool",
+  "answer": {
+    "success": "Follow Bitcoin difficulty adjustment information:\n\n• Progress percent: [progressPercent:percent]\n• Difficulty change: [difficultyChange:decimal]\n• Estimated retarget date: [estimatedRetargetDate:decimal]\n• Remaining blocks: [remainingBlocks]\n• Remaining time: [remainingTime:time]\n• Previous retarget: [previousRetarget:decimal]\n• Previous time: [previousTime:time]\n• NextRetarget height: [nextRetargetHeight]\n• Time avg: [timeAvg:time]\n• Adjusted time avg: [adjustedTimeAvg:time]\n• Time offset: [timeOffset]\n• Expected blocks: [expectedBlocks:decimal]",
+    "error": "😞 No one Bitcoin price was found, please try again"
   }
-  
+}

@@ -5,7 +5,7 @@
     "default": "bitcoin"
   },
   "answer":{
-    "success": "O preço atual do [data.name] é [data.priceUsd] USD, variação de [data.changePercent24Hr] nas últimas 24 horas",
+    "success": "O preço atual do [data.name] ([data.symbol]) é [data.priceUsd:currency], variação de [data.changePercent24Hr:percent] nas últimas 24 horas",
     "error": "😞 Nenhum preço foi encontrado, por favor, tente novamente"
   }
 }
