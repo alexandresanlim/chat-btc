@@ -11,7 +11,7 @@
 </p>
     
 <p align='center'>
-  <img width="250" src="https://github.com/alexandresanlim/chat-btc/blob/master/assets/images/store/google-play/1.png?raw=true"/> <img width="250" src="https://github.com/alexandresanlim/chat-btc/blob/master/assets/images/store/google-play/1.png?raw=true"/>  <img width="250" src="https://github.com/alexandresanlim/chat-btc/blob/master/assets/images/store/google-play/1.png?raw=true"/> 
+  <img width="250" src="https://github.com/alexandresanlim/chat-btc/blob/master/assets/images/store/google-play/1.png?raw=true"/> <img width="250" src="https://github.com/alexandresanlim/chat-btc/blob/master/assets/images/store/google-play/2.png?raw=true"/>  <img width="250" src="https://github.com/alexandresanlim/chat-btc/blob/master/assets/images/store/google-play/3.png?raw=true"/> 
  </p>
   
 <!-- <p align='center'>
