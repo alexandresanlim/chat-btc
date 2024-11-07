@@ -1,4 +1,4 @@
-<h1 align='center'> ChatBTC </h1>
+<h1 align='center'> ChatBTC (Beta) </h1>
 <p align='center'> A "ChatGPT" for bitcoiners </p>
 
 <p align='center'> 
