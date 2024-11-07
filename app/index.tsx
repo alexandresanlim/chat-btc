@@ -1,7 +1,4 @@
 import {
-  renderAccessory,
-  renderActions,
-  renderChatEmpty,
   renderComposer,
   renderInputToolbar,
   renderQuickReplies,
@@ -11,8 +8,6 @@ import {
 import {
   renderAvatar,
   renderBubble,
-  renderCustomView,
-  renderFooter,
   renderMessageText,
 } from "@/components/src/MessageContainer";
 import {
@@ -34,16 +29,10 @@ import React, { useState, useCallback, useEffect } from "react";
 import {
   KeyboardAvoidingView,
   Platform,
-  Text,
   useColorScheme,
   View,
 } from "react-native";
-import {
-  GiftedChat,
-  IMessage,
-  InputToolbar,
-  User,
-} from "react-native-gifted-chat";
+import { GiftedChat, IMessage, User } from "react-native-gifted-chat";
 import { Colors } from "@/constants/Colors";
 import { blue } from "react-native-reanimated/lib/typescript/reanimated2/Colors";
 import { ScrollView } from "react-native-gesture-handler";
@@ -242,62 +231,62 @@ export default function Index() {
   };
 
   return (
-    <GiftedChat
-      messages={messages}
-      onSend={(messages) => {
-        const value = messages[0].text.toLowerCase();
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : undefined}
+      style={{ flex: 1 }}
+    >
+      <GiftedChat
+        isStatusBarTranslucentAndroid={false}
+        messages={messages}
+        onSend={(messages) => {
+          const value = messages[0].text.toLowerCase();
 
-        const isQuickReply = checkIsQuickReply(value);
+          const isQuickReply = checkIsQuickReply(value);
 
-        if (isQuickReply) {
-          return;
-        }
+          if (isQuickReply) {
+            return;
+          }
 
-        onSend(messages);
-      }}
-      onQuickReply={(reply) => {
-        const value = reply[0].value.toLowerCase();
+          onSend(messages);
+        }}
+        onQuickReply={(reply) => {
+          const value = reply[0].value.toLowerCase();
 
-        const isQuickReply = checkIsQuickReply(value);
+          const isQuickReply = checkIsQuickReply(value);
 
-        if (isQuickReply) {
-          return;
-        }
+          if (isQuickReply) {
+            return;
+          }
 
-        setCurrentText(value);
-        console.log("reply", reply);
-      }}
-      //messageIdGenerator={generateRandomId}
-      user={{
-        _id: "me",
-      }}
-      renderUsernameOnMessage={true}
-      showUserAvatar={true}
-      renderAvatarOnTop={true}
-      renderSend={(props) => renderSend(props, colorScheme)}
-      renderComposer={(props) => renderComposer(props, colorScheme)}
-      renderInputToolbar={(props) => renderInputToolbar(props, colorScheme)}
-      renderAvatar={(props) => renderAvatar(props, colorScheme)}
-      keyboardShouldPersistTaps="always"
-      placeholder="Message"
-      onInputTextChanged={setCurrentText}
-      text={currentText}
-      scrollToBottom={true}
-      renderQuickReplies={(props) => renderQuickReplies(props, colorScheme)}
-      // renderActions={renderActions}
-      // renderAccessory={(props) => renderAccessory(props, colorScheme)}
-      // maxComposerHeight={300}
-      // renderFooter={renderFooter}
-      scrollToBottomComponent={() => renderScrollToBottom(colors.text)}
-      scrollToBottomStyle={{
-        backgroundColor: colors.scrollBottom,
-        alignSelf: "center",
-        justifyContent: "center",
-      }}
-      // renderCustomView={renderCustomView}
-      // isCustomViewBottom
-      renderBubble={(props) => renderBubble(props, colorScheme)}
-      renderMessageText={(props) => renderMessageText(props, colorScheme)}
-    />
+          setCurrentText(value);
+        }}
+        //messageIdGenerator={generateRandomId}
+        user={{
+          _id: "me",
+        }}
+        renderUsernameOnMessage={true}
+        showUserAvatar={true}
+        renderAvatarOnTop={true}
+        renderSend={(props) => renderSend(props, colorScheme)}
+        renderComposer={(props) => renderComposer(props, colorScheme)}
+        renderInputToolbar={(props) => renderInputToolbar(props, colorScheme)}
+        renderAvatar={(props) => renderAvatar(props, colorScheme)}
+        keyboardShouldPersistTaps="always"
+        placeholder="Message"
+        onInputTextChanged={setCurrentText}
+        text={currentText}
+        scrollToBottom={true}
+        renderQuickReplies={(props) => renderQuickReplies(props, colorScheme)}
+        //renderFooter={renderFooter}
+        scrollToBottomComponent={() => renderScrollToBottom(colors.text)}
+        scrollToBottomStyle={{
+          backgroundColor: colors.scrollBottom,
+          alignSelf: "center",
+          justifyContent: "center",
+        }}
+        renderBubble={(props) => renderBubble(props, colorScheme)}
+        renderMessageText={(props) => renderMessageText(props, colorScheme)}
+      />
+    </KeyboardAvoidingView>
   );
 }
