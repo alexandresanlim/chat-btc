@@ -2,7 +2,7 @@
   {
     "title": "Price",
     "value": "Price",
-    "autoComplete": ["Bitcoin", "Ethereum", "Solano"]
+    "autoComplete": ["Bitcoin", "Ethereum", "Solana"]
   },
   {
     "title": "Address",
