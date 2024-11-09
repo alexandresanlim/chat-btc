@@ -1,7 +1,7 @@
 import { Colors } from "@/constants/Colors";
 import { Ionicons } from "@expo/vector-icons";
 import React from "react";
-import { ColorSchemeName, StatusBar } from "react-native";
+import { ColorSchemeName, Image, StatusBar } from "react-native";
 
 import {
   InputToolbar,
@@ -11,8 +11,42 @@ import {
   IMessage,
   ComposerProps,
   QuickRepliesProps,
+  Actions,
 } from "react-native-gifted-chat";
 import { QuickReplies } from "react-native-gifted-chat/lib/QuickReplies";
+
+export const renderActions = props => (
+  <Actions
+    {...props}
+    containerStyle={{
+      width: 44,
+      height: 44,
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginLeft: 4,
+      marginRight: 4,
+      marginBottom: 0,
+    }}
+    icon={() => (
+      <Image
+        style={{ width: 32, height: 32 }}
+        source={{
+          uri: 'https://placeimg.com/32/32/any',
+        }}
+      />
+    )}
+    options={{
+      'Choose From Library': () => {
+        console.log('Choose From Library')
+      },
+      Cancel: () => {
+        console.log('Cancel')
+      },
+    }}
+    optionTintColor="#222B45"
+  />
+)
+
 
 export const renderInputToolbar = (
   props: InputToolbarProps<IMessage>,

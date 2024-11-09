@@ -1,6 +1,7 @@
 import { Colors } from "@/constants/Colors";
 import React from "react";
-import { View, Text, useColorScheme, ColorSchemeName } from "react-native";
+import { View, Text, useColorScheme, ColorSchemeName, StyleSheet } from "react-native";
+import { FlatList, GestureHandlerRootView } from "react-native-gesture-handler";
 import {
   Avatar,
   Bubble,
@@ -97,3 +98,44 @@ export const renderFooter = () => (
     <Text>footer here</Text>
   </View>
 );
+
+const styles = StyleSheet.create({
+  itemContainer: {
+    backgroundColor: '#f9f9f9', // Fundo claro
+    padding: 10, // Padding ao redor do texto
+    borderRadius: 10, // Bordas arredondadas
+    marginVertical: 5, // Espaço entre os itens
+  },
+  itemText: {
+    fontSize: 16,
+    color: '#333', // Cor do texto
+  },
+  divider: {
+    marginTop: 5, // Espaço após o texto
+    borderBottomWidth: 1,
+    borderBottomColor: '#ddd', // Cor do divisor
+  },
+});
+
+export const renderChatFooter = () => {
+  const data = [
+    { id: '1', title: 'Primeira linha de texto' },
+    { id: '2', title: 'Segunda linha de texto' },
+    { id: '3', title: 'Terceira linha de texto' },
+  ];
+
+  return (
+    <GestureHandlerRootView style={{ height: 'auto'}}>
+       <FlatList
+        data={data}
+        renderItem={({ item }) => (
+          <View style={{marginHorizontal: 24  }}>
+            <Text style={[styles.itemText, { paddingVertical: 12, color:'white'}]}>{item.title}</Text>
+            <View style={styles.divider} />
+          </View>
+        )}
+        keyExtractor={(item) => item.id}
+      />
+    </GestureHandlerRootView>
+  );
+}

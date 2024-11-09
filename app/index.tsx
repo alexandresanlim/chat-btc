@@ -1,4 +1,5 @@
 import {
+  renderActions,
   renderComposer,
   renderInputToolbar,
   renderQuickReplies,
@@ -8,6 +9,8 @@ import {
 import {
   renderAvatar,
   renderBubble,
+  renderChatFooter,
+  renderFooter,
   renderMessageText,
 } from "@/components/src/MessageContainer";
 import {
@@ -34,8 +37,6 @@ import {
 } from "react-native";
 import { GiftedChat, IMessage, User } from "react-native-gifted-chat";
 import { Colors } from "@/constants/Colors";
-import { blue } from "react-native-reanimated/lib/typescript/reanimated2/Colors";
-import { ScrollView } from "react-native-gesture-handler";
 import { getCommandListAsync, ICommandData } from "@/services/api/commandList";
 
 export default function Index() {
@@ -277,7 +278,7 @@ export default function Index() {
         text={currentText}
         scrollToBottom={true}
         renderQuickReplies={(props) => renderQuickReplies(props, colorScheme)}
-        //renderFooter={renderFooter}
+        renderChatFooter={renderChatFooter}
         scrollToBottomComponent={() => renderScrollToBottom(colors.text)}
         scrollToBottomStyle={{
           backgroundColor: colors.scrollBottom,
@@ -286,6 +287,7 @@ export default function Index() {
         }}
         renderBubble={(props) => renderBubble(props, colorScheme)}
         renderMessageText={(props) => renderMessageText(props, colorScheme)}
+        renderActions={renderActions}
       />
     </KeyboardAvoidingView>
   );
