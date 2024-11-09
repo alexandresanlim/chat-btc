@@ -1,23 +1,23 @@
 [
   {
     "title": "Price",
-    "value": "price",
+    "value": "Price",
     "autoComplete": ["Bitcoin", "Ethereum", "Solano"]
   },
   {
     "title": "Address",
-    "value": "address"
+    "value": "Address"
   },
   {
     "title": "Difficulty",
-    "value": "difficulty"
+    "value": "Difficulty"
   },
   {
     "title": "Code",
-    "value": "code"
+    "value": "Code"
   },
   {
     "title": "Less",
-    "value": "less"
+    "value": "Less"
   }
 ]
