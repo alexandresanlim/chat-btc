@@ -19,10 +19,10 @@
 - [🤖 Bots](#-bots)
 - [Commands](#commands)
   - [Create](#commands)
-  - [Create with parameter](#commands)
-  - [Get data](#commands)
-  - [Format data](#commands)
-  - [Set on quich type or auto complete](#commands)
+  - [Create with parameter](#create-with-parameter)
+  - [Get data](#get-data)
+  - [Format data](#format-data)
+  - [Set on quich type or auto complete](#set-on-quick-type-or-auto-complete)
 
 
 
