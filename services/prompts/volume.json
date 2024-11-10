@@ -1,0 +1,12 @@
+{
+    "url": "https://api.coincap.io/v2/assets/{0}",
+    "botId": "coincap",
+    "parameters": {
+      "default": "Bitcoin"
+    },
+    "answer": {
+      "success": "The current volume of [data.name] ([data.symbol]) is [data.volumeUsd24Hr:decimal] over the past 24 hours",
+      "error": "😞 No one info was found, please try again"
+    }
+  }
+  
