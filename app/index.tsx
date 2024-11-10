@@ -303,6 +303,7 @@ export default function Index() {
       renderChatFooter={() =>
         renderChatFooter(currentCommand, currentAutoComplete, setCurrentText)
       }
+   
       scrollToBottomComponent={() => renderScrollToBottom(colors.text)}
       renderBubble={(props) => renderBubble(props, colorScheme)}
       renderMessageText={(props) => renderMessageText(props, colorScheme)}

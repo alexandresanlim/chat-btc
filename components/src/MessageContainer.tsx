@@ -27,6 +27,7 @@ import Animated, {
   FadeInUp,
   FadeOut,
 } from "react-native-reanimated";
+import { ThemedDivisor } from "../ThemedDivisor";
 
 export const renderAvatar = (
   props: AvatarProps<IMessage>,
@@ -116,13 +117,6 @@ export const renderFooter = () => (
 );
 
 const styles = StyleSheet.create({
-  itemContainer: {
-    backgroundColor: "#f9f9f9", // Fundo claro
-    padding: 10, // Padding ao redor do texto
-    borderRadius: 10, // Bordas arredondadas
-    marginVertical: 5, // Espaço entre os itens
-  },
-
   divider: {
     borderBottomWidth: 1,
     borderBottomColor: "#ddd",
@@ -165,9 +159,7 @@ export const renderChatFooter = (
                   <ThemedText type="disable">{item.command}</ThemedText>
                   <ThemedText>{item.title}</ThemedText>
                 </ThemedView>
-                {index !== data.length - 1 && (
-                  <ThemedView style={styles.divider} />
-                )}
+                {index !== data.length - 1 && <ThemedDivisor />}
               </View>
             </TouchableOpacity>
           </Animated.View>

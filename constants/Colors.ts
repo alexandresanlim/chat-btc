@@ -19,6 +19,7 @@ export const Colors = {
     border: "#dadada",
     link: "#1d53bf",
     scrollBottom: "#ffffff",
+    divisor: "#dadada",
   },
   dark: {
     disableText: "#707070",
@@ -32,5 +33,6 @@ export const Colors = {
     border: "#4e4e4e",
     link: "#79b6fe",
     scrollBottom: "#333333",
+    divisor: "#4e4e4e"
   },
 };

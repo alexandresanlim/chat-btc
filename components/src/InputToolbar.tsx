@@ -26,14 +26,11 @@ export const renderInputToolbar = (
       {...props}
       containerStyle={{
         backgroundColor: colors.foreground,
-        paddingVertical: 4,
+        paddingVertical: 8,
         marginHorizontal: 8,
         marginBottom: StatusBar.currentHeight ?? +42,
         borderRadius: 32,
       }}
-      accessoryStyle={{backgroundColor: 'red'}}
-      
-      primaryStyle={{ alignItems: "center" }}
     />
   );
 };
@@ -47,6 +44,7 @@ export const renderComposer = (
   return (
     <Composer
       {...props}
+      textInputAutoFocus={true}
       textInputStyle={{
         color: colors.text,
         backgroundColor: colors.foreground,
@@ -106,7 +104,7 @@ export const renderQuickReplies = (
         paddingHorizontal: 24,
         borderRadius: 32,
       }}
-      quickReplyTextStyle={{ color: colors.text }}
+      quickReplyTextStyle={{ color: colors.text, fontWeight: '600' }}
     />
   );
 };
