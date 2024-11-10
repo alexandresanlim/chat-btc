@@ -1,0 +1,24 @@
+[
+    {
+      "title": "Preço",
+      "value": "Preço",
+      "autoComplete": ["Bitcoin", "Ethereum", "Solana"]
+    },
+    {
+      "title": "Endereço",
+      "value": "Endereço"
+    },
+    {
+      "title": "Dificuldade",
+      "value": "Dificuldade"
+    },
+    {
+      "title": "Código",
+      "value": "Código"
+    },
+    {
+      "title": "Menos",
+      "value": "Less"
+    }
+  ]
+  
