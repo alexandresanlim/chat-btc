@@ -9,7 +9,6 @@ import {
   renderAvatar,
   renderBubble,
   renderChatFooter,
-  renderFooter,
   renderMessageText,
 } from "@/components/src/MessageContainer";
 import {
@@ -25,7 +24,6 @@ import {
   getSatoshiUser,
 } from "@/helpers/userHelper";
 import { getCommandAsync } from "@/services/api/command";
-import { getUserAsync } from "@/services/api/user";
 import { getValueAsync } from "@/services/api/value";
 import React, { useState, useCallback, useEffect } from "react";
 import {
@@ -37,6 +35,7 @@ import {
 import { GiftedChat, IMessage, User } from "react-native-gifted-chat";
 import { Colors } from "@/constants/Colors";
 import { getCommandListAsync, ICommandData } from "@/services/api/commandList";
+import { getBotAsync } from "@/services/api/bot";
 
 export default function Index() {
   const [messages, setMessages] = useState<IMessage[]>([]);
@@ -134,7 +133,7 @@ export default function Index() {
   };
 
   const getCommand = async (command: string) => {
-    const { ok, url, parameterDefault, answer, userId } = await getCommandAsync(
+    const { ok, url, parameterDefault, answer, botId } = await getCommandAsync(
       command
     );
 
@@ -142,7 +141,7 @@ export default function Index() {
       answerCommandNotFound(url);
     }
 
-    return { ok, url, parameterDefault, answer, userId };
+    return { ok, url, parameterDefault, answer, botId };
   };
 
   const getValue = async (url: string, parameter: string) => {
@@ -155,8 +154,8 @@ export default function Index() {
     return { ok, value };
   };
 
-  const getUser = async (userId: string) => {
-    const { ok, id, name, avatar } = await getUserAsync(userId);
+  const getUser = async (botId: string) => {
+    const { ok, id, name, avatar } = await getBotAsync(botId);
 
     if (!ok) {
       answerCommandNotFound("getUser");
@@ -172,7 +171,7 @@ export default function Index() {
     try {
       answerLoading();
 
-      const { ok, url, parameterDefault, answer, userId } = await getCommand(
+      const { ok, url, parameterDefault, answer, botId } = await getCommand(
         command
       );
 
@@ -196,8 +195,8 @@ export default function Index() {
 
       let user = getSatoshiUser();
 
-      if (userId) {
-        const { ok: okUser, id, name, avatar } = await getUser(userId);
+      if (botId) {
+        const { ok: okUser, id, name, avatar } = await getUser(botId);
 
         if (okUser) {
           user = createUser(id, `By: ${name}`, avatar);
@@ -305,6 +304,11 @@ export default function Index() {
       }
    
       scrollToBottomComponent={() => renderScrollToBottom(colors.text)}
+      scrollToBottomStyle={{
+        backgroundColor: colors.scrollBottom,
+        alignSelf: "center",
+        justifyContent: "center",
+      }}
       renderBubble={(props) => renderBubble(props, colorScheme)}
       renderMessageText={(props) => renderMessageText(props, colorScheme)}
     />

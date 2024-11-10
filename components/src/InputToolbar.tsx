@@ -30,6 +30,7 @@ export const renderInputToolbar = (
         marginHorizontal: 8,
         marginBottom: StatusBar.currentHeight ?? +42,
         borderRadius: 32,
+        borderColor: colors.background,
       }}
     />
   );

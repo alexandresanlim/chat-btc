@@ -22,10 +22,7 @@ import {
 import { ThemedText } from "../ThemedText";
 import { ThemedView } from "../ThemedView";
 import Animated, {
-  FadeIn,
-  FadeInDown,
   FadeInUp,
-  FadeOut,
 } from "react-native-reanimated";
 import { ThemedDivisor } from "../ThemedDivisor";
 
@@ -110,19 +107,6 @@ export const renderMessageText = (
   );
 };
 
-export const renderFooter = () => (
-  <View style={{ minHeight: 20, alignItems: "center", backgroundColor: "red" }}>
-    <Text>footer here</Text>
-  </View>
-);
-
-const styles = StyleSheet.create({
-  divider: {
-    borderBottomWidth: 1,
-    borderBottomColor: "#ddd",
-  },
-});
-
 export const renderChatFooter = (
   comamand: string = "cmd",
   autoCompleteList: string[],
@@ -143,7 +127,7 @@ export const renderChatFooter = (
         data={data}
         scrollEnabled={false}
         renderItem={({ item, index }) => (
-          <Animated.View // Componente animado
+          <Animated.View
             entering={FadeInUp.delay((data.length - 1 - index) * 50).duration(
               500
             )}

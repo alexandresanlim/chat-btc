@@ -1,5 +1,5 @@
-export const getUserAsync = async (userId: string) => {
-  const url = `https://raw.githubusercontent.com/alexandresanlim/chat-btc/refs/heads/master/services/bots/${userId}.json`;
+export const getBotAsync = async (botId: string) => {
+  const url = `https://raw.githubusercontent.com/alexandresanlim/chat-btc/refs/heads/master/services/bots/${botId}.json`;
 
   try {
     const response = await fetch(url);

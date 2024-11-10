@@ -21,7 +21,7 @@ export const getCommandAsync = async (command: string) => {
         success: json.answer.success,
         error: json.answer.error,
       },
-      userId: json.userId,
+      botId: json.botId,
     };
   } catch {
     return {

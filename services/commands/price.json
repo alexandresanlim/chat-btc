@@ -1,6 +1,6 @@
 {
   "url": "https://api.coincap.io/v2/assets/{0}",
-  "userId": "coincap",
+  "botId": "coincap",
   "parameters": {
     "default": "Bitcoin"
   },

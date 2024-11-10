@@ -1,6 +1,6 @@
 {
   "url": "https://mempool.space/api/v1/difficulty-adjustment",
-  "userId": "mempool",
+  "botId": "mempool",
   "answer": {
     "success": "Follow Bitcoin difficulty adjustment information:\n\n• Progress percent: [progressPercent:percent]\n• Difficulty change: [difficultyChange:decimal]\n• Estimated retarget date: [estimatedRetargetDate:date]\n• Remaining blocks: [remainingBlocks]\n• Remaining time: [remainingTime:time]\n• Previous retarget: [previousRetarget:decimal]\n• Previous time: [previousTime:time]\n• NextRetarget height: [nextRetargetHeight]\n• Time avg: [timeAvg:time]\n• Adjusted time avg: [adjustedTimeAvg:time]\n• Expected blocks: [expectedBlocks:decimal]",
     "error": "😞 No one Bitcoin price was found, please try again"
