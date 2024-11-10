@@ -108,17 +108,17 @@ export const renderMessageText = (
 };
 
 export const renderChatFooter = (
-  comamand: string = "cmd",
+  prompt: string = "cmd",
   autoCompleteList: string[],
   onPress: (text: string) => void
 ) => {
-  if (!comamand || !autoCompleteList) {
+  if (!prompt || !autoCompleteList) {
     return null;
   }
 
   const data = autoCompleteList.map((item) => ({
     title: item,
-    command: comamand,
+    prompt: prompt,
   }));
 
   return (
@@ -133,14 +133,14 @@ export const renderChatFooter = (
             )}
           >
             <TouchableOpacity
-              onPress={() => onPress(`${item.command} ${item.title}`)}
+              onPress={() => onPress(`${item.prompt} ${item.title}`)}
               activeOpacity={0.3}
             >
               <View style={{ marginHorizontal: 24 }}>
                 <ThemedView
                   style={{ flexDirection: "row", gap: 4, paddingVertical: 16 }}
                 >
-                  <ThemedText type="disable">{item.command}</ThemedText>
+                  <ThemedText type="disable">{item.prompt}</ThemedText>
                   <ThemedText>{item.title}</ThemedText>
                 </ThemedView>
                 {index !== data.length - 1 && <ThemedDivisor />}
@@ -148,7 +148,7 @@ export const renderChatFooter = (
             </TouchableOpacity>
           </Animated.View>
         )}
-        // keyExtractor={(item) => item.command}
+        // keyExtractor={(item) => item.prompt}
       />
     </GestureHandlerRootView>
   );

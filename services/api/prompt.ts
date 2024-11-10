@@ -1,5 +1,5 @@
-export const getCommandAsync = async (command: string) => {
-  const url = `https://raw.githubusercontent.com/alexandresanlim/chat-btc/refs/heads/master/services/commands/${command}.json`;
+export const getPromptAsync = async (prompt: string) => {
+  const url = `https://raw.githubusercontent.com/alexandresanlim/chat-btc/refs/heads/master/services/prompts/${prompt}.json`;
 
   try {
     const response = await fetch(url);
@@ -23,7 +23,8 @@ export const getCommandAsync = async (command: string) => {
       },
       botId: json.botId,
     };
-  } catch {
+  } catch (error) {
+    console.log("error", error);
     return {
       ok: false,
     };

@@ -16,14 +16,14 @@ import {
   getLoadingMessage,
   getMessage,
 } from "@/helpers/answerHelper";
-import { getCommandAndParameter } from "@/helpers/askHelper";
+import { getPromptAndParameter } from "@/helpers/askHelper";
 
 import {
   createUser,
   getChatBTCUser,
   getSatoshiUser,
 } from "@/helpers/userHelper";
-import { getCommandAsync } from "@/services/api/command";
+
 import { getValueAsync } from "@/services/api/value";
 import React, { useState, useCallback, useEffect } from "react";
 import {
@@ -34,30 +34,32 @@ import {
 } from "react-native";
 import { GiftedChat, IMessage, User } from "react-native-gifted-chat";
 import { Colors } from "@/constants/Colors";
-import { getCommandListAsync, ICommandData } from "@/services/api/commandList";
+
 import { getBotAsync } from "@/services/api/bot";
+import { getPromptListAsync, IPromptData } from "@/services/api/promptList";
+import { getPromptAsync } from "@/services/api/prompt";
 
 export default function Index() {
   const [messages, setMessages] = useState<IMessage[]>([]);
   const [currentText, setCurrentText] = useState<string>("");
-  const [commandList, setCommandList] = useState<ICommandData[]>([]);
-  const [currentCommand, setCurrentCommand] = useState<string>("");
+  const [promptList, setPromptList] = useState<IPromptData[]>([]);
+  const [currentPrompt, setCurrentPrompt] = useState<string>("");
   const [currentAutoComplete, setCurrentAutoComplete] = useState<string[]>([]);
 
-  const setCommandListAsync = async () => {
+  const setPromptListAsync = async () => {
     answerLoading();
 
-    const returnData = await getCommandListAsync();
+    const returnData = await getPromptListAsync();
 
     if (!returnData.ok) {
       return;
     }
 
-    setCommandList(returnData.data);
+    setPromptList(returnData.data);
   };
 
   const setQuickReplies = (isHighlight: boolean) => {
-    const dataHighlight = commandList.slice(0, 3);
+    const dataHighlight = promptList.slice(0, 3);
 
     dataHighlight.push({
       title: "More",
@@ -72,7 +74,7 @@ export default function Index() {
         quickReplies: {
           type: "radio",
           keepIt: true,
-          values: isHighlight ? dataHighlight : commandList,
+          values: isHighlight ? dataHighlight : promptList,
         },
         user: getChatBTCUser(),
       },
@@ -80,16 +82,16 @@ export default function Index() {
   };
 
   useEffect(() => {
-    if (!(commandList?.length > 0)) {
-      setCommandListAsync();
+    if (!(promptList?.length > 0)) {
+      setPromptListAsync();
     }
   }, []);
 
   useEffect(() => {
-    if (commandList.length > 0) {
+    if (promptList.length > 0) {
       setQuickReplies(true);
     }
-  }, [commandList]);
+  }, [promptList]);
 
   useEffect(() => {
     const textToCompare = currentText.split(" ")[0]?.toLowerCase() ?? "";
@@ -99,7 +101,7 @@ export default function Index() {
       return;
     }
 
-    const autoComplete = commandList.filter(
+    const autoComplete = promptList.filter(
       (x) => x.title.toLowerCase() === textToCompare
     );
 
@@ -107,7 +109,7 @@ export default function Index() {
       const value = autoComplete?.[0];
 
       setCurrentAutoComplete(value?.autoComplete ?? []);
-      setCurrentCommand(value?.value);
+      setCurrentPrompt(value?.value);
     }
   }, [currentText]);
 
@@ -127,18 +129,18 @@ export default function Index() {
     );
   };
 
-  const answerCommandNotFound = (log: string) => {
+  const answerPromptNotFound = (log: string) => {
     console.log("error", log);
-    answerMessage("Command not found, send help or menu to see command list");
+    answerMessage("Prompt not found, send help or menu to see prompt list");
   };
 
-  const getCommand = async (command: string) => {
-    const { ok, url, parameterDefault, answer, botId } = await getCommandAsync(
-      command
+  const getPrompt = async (prompt: string) => {
+    const { ok, url, parameterDefault, answer, botId } = await getPromptAsync(
+      prompt
     );
 
     if (!ok) {
-      answerCommandNotFound(url);
+      answerPromptNotFound(url);
     }
 
     return { ok, url, parameterDefault, answer, botId };
@@ -148,7 +150,7 @@ export default function Index() {
     const { ok, value } = await getValueAsync(url, parameter);
 
     if (!ok || !value) {
-      answerCommandNotFound(url);
+      answerPromptNotFound(url);
     }
 
     return { ok, value };
@@ -158,21 +160,20 @@ export default function Index() {
     const { ok, id, name, avatar } = await getBotAsync(botId);
 
     if (!ok) {
-      answerCommandNotFound("getUser");
+      answerPromptNotFound("getUser");
     }
 
     return { ok, id, name, avatar };
   };
 
   const buildAnswer = async (message: string) => {
-    const { command, parameter: parameterSent } =
-      getCommandAndParameter(message);
+    const { prompt, parameter: parameterSent } = getPromptAndParameter(message);
 
     try {
       answerLoading();
 
-      const { ok, url, parameterDefault, answer, botId } = await getCommand(
-        command
+      const { ok, url, parameterDefault, answer, botId } = await getPrompt(
+        prompt
       );
 
       if (!ok) {
@@ -212,7 +213,7 @@ export default function Index() {
       answerMessage(finalAnswer, user);
     } catch (error) {
       const errorMessage = (error as Error)?.message;
-      answerCommandNotFound("exception " + errorMessage);
+      answerPromptNotFound("exception " + errorMessage);
     }
   };
 
@@ -271,7 +272,7 @@ export default function Index() {
         cleanAutoComplete();
       }}
       onQuickReply={(reply) => {
-        const data = reply?.[0] as ICommandData;
+        const data = reply?.[0] as IPromptData;
         const value = data.value.toLowerCase();
 
         const isQuickReply = checkIsQuickReply(value);
@@ -300,9 +301,8 @@ export default function Index() {
       scrollToBottom={true}
       renderQuickReplies={(props) => renderQuickReplies(props, colorScheme)}
       renderChatFooter={() =>
-        renderChatFooter(currentCommand, currentAutoComplete, setCurrentText)
+        renderChatFooter(currentPrompt, currentAutoComplete, setCurrentText)
       }
-   
       scrollToBottomComponent={() => renderScrollToBottom(colors.text)}
       scrollToBottomStyle={{
         backgroundColor: colors.scrollBottom,

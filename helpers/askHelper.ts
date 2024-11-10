@@ -1,4 +1,4 @@
-export const getCommand = (text: string) => {
+export const getPrompt = (text: string) => {
   const splitText = text.split(" ");
 
   return {
@@ -12,11 +12,11 @@ const replaceSpecialCharacter = (text: string) => {
   return text.replace(/ç/gi, "c");
 };
 
-export const getCommandAndParameter = (text: string) => {
-  const cmd = getCommand(text);
+export const getPromptAndParameter = (text: string) => {
+  const cmd = getPrompt(text);
 
   return {
-    command: replaceSpecialCharacter(cmd.firt.toLocaleLowerCase()),
+    prompt: replaceSpecialCharacter(cmd.firt.toLocaleLowerCase()),
     parameter: cmd.secondary,
   };
 };

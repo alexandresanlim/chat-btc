@@ -18,7 +18,8 @@ export const getValueAsync = async (url: string, parameter: string) => {
       ok: response.ok,
       value: json,
     };
-  } catch {
+  } catch (error) {
+    console.log("error", error);
     return {
       ok: false,
     };

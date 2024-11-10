@@ -1,18 +1,18 @@
-export interface ICommandData {
+export interface IPromptData {
   title: string;
   value: string;
   autoComplete?: string[];
 }
 
-export interface ICommandListReturn {
-  data: ICommandData[];
+export interface IPromptListReturn {
+  data: IPromptData[];
   ok: boolean;
 }
 
-export const getCommandListAsync = async (
+export const getPromptListAsync = async (
   location: string = "us"
-): Promise<ICommandListReturn> => {
-  const url = `https://raw.githubusercontent.com/alexandresanlim/chat-btc/refs/heads/master/services/commands/commandList/list_${location}.json`;
+): Promise<IPromptListReturn> => {
+  const url = `https://raw.githubusercontent.com/alexandresanlim/chat-btc/refs/heads/master/services/prompts/promptList/list_${location}.json`;
 
   try {
     const response = await fetch(url);
@@ -30,7 +30,8 @@ export const getCommandListAsync = async (
       ok: true,
       data: json,
     };
-  } catch {
+  } catch (error) {
+    console.log("error", error);
     return {
       ok: false,
       data: [],

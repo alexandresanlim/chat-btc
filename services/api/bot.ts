@@ -18,7 +18,9 @@ export const getBotAsync = async (botId: string) => {
       name: json.name,
       avatar: json.avatar,
     };
-  } catch {
+  } catch (error) {
+    console.log("error", error);
+
     return {
       ok: false,
     };
