@@ -60,11 +60,11 @@ To create new one, follow this template:
 ```
 and put on [services/commands](https://github.com/alexandresanlim/chat-btc/tree/master/services/commands) path
 
-⚠️ <b>The file name is the command sent by user to invoke this command</b>
+⚠️ <b>The file name should match the command entered by the user to invoke this command.</b>
 
 ### Create with parameter [🔝](#menu)
 
-When url require a paramter as bellow example, you can set `{0}` on url and define a parameter default as `"default": "Bitcoin"`. It Represente the secondary word type sent by user.
+When the URL requires a parameter, as in the example below, you can use `{0}` in the URL and define a default parameter as `"default": "Bitcoin"`. This represents the secondary term entered by the user.
 
 ```json
 {
@@ -80,10 +80,10 @@ When url require a paramter as bellow example, you can set `{0}` on url and defi
 }
 ```
 ### Get data [🔝](#menu)
-It's representate by betwen `[]` character with path to get data from api return.
+It is represented within `[]` brackets, indicating the path to retrieve data from the API response.
 
 ### Format data [🔝](#menu)
-You can format data following `[pathData:{format}]`. We support:</br></br>
+You can format data using `[pathData:{format}]`. Supported formats include:
 Percent: `[pathData:percent]`</br>
 Decimal: `[pathData:decimal]`</br>
 Date: `[pathData:date]`</br>
@@ -92,7 +92,7 @@ Currency: `[pathData:currency]`</br>
 
 ### Set on quick type or auto complete [🔝](#menu)
 
-To it follow this template:
+To set this up, follow this template:
 
 ```json
 {
