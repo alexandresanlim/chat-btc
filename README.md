@@ -104,9 +104,9 @@ and set on this [file](https://github.com/alexandresanlim/chat-btc/blob/master/s
 
 ## ToDo
 
-[] Create unit test
-[] Optin to create and manager Bitcoin wallets
-[] P2P community
-[] Option to set real IA as ChatGPT
+- [ ] Create unit test
+- [ ] Optin to create and manager Bitcoin wallets
+- [ ] P2P community
+- [ ] Option to set real IA as ChatGPT
 
 
