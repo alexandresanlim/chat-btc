@@ -12,7 +12,7 @@ export interface IPromptListReturn {
 export const getPromptListAsync = async (
   location: string = "us"
 ): Promise<IPromptListReturn> => {
-  const url = `https://raw.githubusercontent.com/alexandresanlim/chat-btc/refs/heads/master/services/prompts/promptList/list_${location}.json`;
+  const url = `https://raw.githubusercontent.com/alexandresanlim/chat-btc/refs/heads/master/services/prompts/list/${location}.json`;
 
   try {
     const response = await fetch(url);

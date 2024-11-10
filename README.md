@@ -101,7 +101,7 @@ To set this up, follow this template:
     "autoComplete": ["Bitcoin", "Ethereum", "Solana"]
 },
 ```
-and set on this [file](https://github.com/alexandresanlim/chat-btc/blob/master/services/prompts/promptList/list_us.json).
+and set on this [file](https://github.com/alexandresanlim/chat-btc/blob/master/services/prompts/list/us.json).
 
 - auto complete is optional
 
