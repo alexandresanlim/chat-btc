@@ -23,6 +23,10 @@
     "value": "Difficulty"
   },
   {
+    "title": "Lightning Stats",
+    "value": "lightning-stats"
+  },
+  {
     "title": "Code",
     "value": "Code"
   },
