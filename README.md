@@ -43,7 +43,7 @@ and put on [services/bots](https://github.com/alexandresanlim/chat-btc/tree/mast
 
 ## Commands
 
-### Create
+### Create [🔝](#contribute)
 To create new one, follow this template:
 ```json
 {
@@ -59,7 +59,7 @@ and put on [services/commands](https://github.com/alexandresanlim/chat-btc/tree/
 
 ⚠️ <b>The file name is the command sent by user to invoke this command</b>
 
-### Create with parameter
+### Create with parameter [🔝](#contribute)
 
 When url require a paramter as bellow example, you can set `{0}` on url and define a parameter default as `"default": "Bitcoin"`. It Represente the secondary word type sent by user.
 
@@ -76,10 +76,10 @@ When url require a paramter as bellow example, you can set `{0}` on url and defi
   }
 }
 ```
-### Get data
+### Get data [🔝](#contribute)
 It's representate by betwen `[]` character with path to get data from api return.
 
-### Format data
+### Format data [🔝](#contribute)
 You can format data following `[pathData:{format}]`. We support:</br></br>
 Percent: `[pathData:percent]`</br>
 Decimal: `[pathData:decimal]`</br>
@@ -87,7 +87,7 @@ Date: `[pathData:date]`</br>
 Time: `[pathData:time]`</br>
 Currency: `[pathData:currency]`</br>
 
-### Set on quick type or auto complete
+### Set on quick type or auto complete [🔝](#contribute)
 
 To it follow this template:
 
