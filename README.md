@@ -18,8 +18,8 @@
 
 - [Contribute](#contribute)
   - [🤖 Bots](#-bots)
-  - [Commands](#commands)
-    - [Create](#commands)
+  - [Prompts](#prompts)
+    - [Create](#prompts)
     - [Create with parameter](#create-with-parameter-)
     - [Get data](#get-data-)
     - [Format data](#format-data-)
@@ -44,7 +44,7 @@ To create new one, follow this template:
 ```
 and put on [services/bots](https://github.com/alexandresanlim/chat-btc/tree/master/services/bots) path
 
-## Commands [🔝](#menu)
+## Prompts [🔝](#menu)
 
 ### Create [🔝](#menu)
 To create new one, follow this template:
@@ -58,9 +58,9 @@ To create new one, follow this template:
   }
 }
 ```
-and put on [services/commands](https://github.com/alexandresanlim/chat-btc/tree/master/services/commands) path
+and put on [services/prompts](https://github.com/alexandresanlim/chat-btc/tree/master/services/prompts) path
 
-⚠️ <b>The file name should match the command entered by the user to invoke this command.</b>
+⚠️ <b>The file name should match the prompt entered by the user to invoke this prompt.</b>
 
 ### Create with parameter [🔝](#menu)
 
@@ -101,7 +101,7 @@ To set this up, follow this template:
     "autoComplete": ["Bitcoin", "Ethereum", "Solana"]
 },
 ```
-and set on this [file](https://github.com/alexandresanlim/chat-btc/blob/master/services/commands/commandList/list_us.json).
+and set on this [file](https://github.com/alexandresanlim/chat-btc/blob/master/services/prompts/promptList/list_us.json).
 
 - auto complete is optional
 
