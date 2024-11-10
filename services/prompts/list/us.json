@@ -15,12 +15,17 @@
     "autoComplete": ["Bitcoin", "Ethereum", "Solana"]
   },
   {
-    "title": "Address",
-    "value": "Address"
+    "title": "Rank",
+    "value": "Rank",
+    "autoComplete": ["Bitcoin", "Ethereum", "Solana"]
   },
   {
     "title": "Difficulty",
     "value": "Difficulty"
+  },
+  {
+    "title": "Address",
+    "value": "Address"
   },
   {
     "title": "Lightning Stats",
@@ -29,6 +34,14 @@
   {
     "title": "Code",
     "value": "Code"
+  },
+  {
+    "title": "P2P (Soon)",
+    "value": "p2p"
+  },
+  {
+    "title": "Wallet (Soon)",
+    "value": "wallet"
   },
   {
     "title": "Less",

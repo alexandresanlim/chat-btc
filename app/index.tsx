@@ -59,7 +59,7 @@ export default function Index() {
   };
 
   const setQuickReplies = (isHighlight: boolean) => {
-    const dataHighlight = promptList.slice(0, 3);
+    const dataHighlight = promptList.slice(0, 4);
 
     dataHighlight.push({
       title: "More",
