@@ -18,6 +18,11 @@
 
 - [🤖 Bots](#-bots)
 - [Commands](#commands)
+  - [Create](#commands)
+  - [Create with parameter](#commands)
+  - [Get data](#commands)
+  - [Format data](#commands)
+  - [Set on quich type or auto complete](#commands)
 
 
 
