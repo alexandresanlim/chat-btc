@@ -5,6 +5,11 @@
     "autoComplete": ["Bitcoin", "Ethereum", "Solana"]
   },
   {
+    "title": "Volume",
+    "value": "Volume",
+    "autoComplete": ["Bitcoin", "Ethereum", "Solana"]
+  },
+  {
     "title": "Supply",
     "value": "Supply",
     "autoComplete": ["Bitcoin", "Ethereum", "Solana"]
