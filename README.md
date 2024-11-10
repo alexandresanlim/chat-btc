@@ -24,7 +24,7 @@
     - [Get data](#get-data-)
     - [Format data](#format-data-)
     - [Set on quich type or auto complete](#set-on-quick-type-or-auto-complete-)
-    - [PR sample](https://github.com/alexandresanlim/chat-btc/pull/1)
+    - [PR sample](https://github.com/alexandresanlim/chat-btc/pull/2)
    
 - [ToDo](#todo-)
 
