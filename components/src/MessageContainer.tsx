@@ -1,6 +1,14 @@
 import { Colors } from "@/constants/Colors";
 import React from "react";
-import { View, Text, useColorScheme, ColorSchemeName, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  useColorScheme,
+  ColorSchemeName,
+  StyleSheet,
+  TouchableOpacity,
+  GestureResponderEvent,
+} from "react-native";
 import { FlatList, GestureHandlerRootView } from "react-native-gesture-handler";
 import {
   Avatar,
@@ -11,6 +19,14 @@ import {
   MessageTextProps,
   BubbleProps,
 } from "react-native-gifted-chat";
+import { ThemedText } from "../ThemedText";
+import { ThemedView } from "../ThemedView";
+import Animated, {
+  FadeIn,
+  FadeInDown,
+  FadeInUp,
+  FadeOut,
+} from "react-native-reanimated";
 
 export const renderAvatar = (
   props: AvatarProps<IMessage>,
@@ -101,41 +117,63 @@ export const renderFooter = () => (
 
 const styles = StyleSheet.create({
   itemContainer: {
-    backgroundColor: '#f9f9f9', // Fundo claro
+    backgroundColor: "#f9f9f9", // Fundo claro
     padding: 10, // Padding ao redor do texto
     borderRadius: 10, // Bordas arredondadas
     marginVertical: 5, // Espaço entre os itens
   },
-  itemText: {
-    fontSize: 16,
-    color: '#333', // Cor do texto
-  },
+
   divider: {
-    marginTop: 5, // Espaço após o texto
     borderBottomWidth: 1,
-    borderBottomColor: '#ddd', // Cor do divisor
+    borderBottomColor: "#ddd",
   },
 });
 
-export const renderChatFooter = () => {
-  const data = [
-    { id: '1', title: 'Primeira linha de texto' },
-    { id: '2', title: 'Segunda linha de texto' },
-    { id: '3', title: 'Terceira linha de texto' },
-  ];
+export const renderChatFooter = (
+  comamand: string = "cmd",
+  autoCompleteList: string[],
+  onPress: (text: string) => void
+) => {
+  if (!comamand || !autoCompleteList) {
+    return null;
+  }
+
+  const data = autoCompleteList.map((item) => ({
+    title: item,
+    command: comamand,
+  }));
 
   return (
-    <GestureHandlerRootView style={{ height: 'auto'}}>
-       <FlatList
+    <GestureHandlerRootView style={{ height: "auto", marginBottom: 2 }}>
+      <FlatList
         data={data}
-        renderItem={({ item }) => (
-          <View style={{marginHorizontal: 24  }}>
-            <Text style={[styles.itemText, { paddingVertical: 12, color:'white'}]}>{item.title}</Text>
-            <View style={styles.divider} />
-          </View>
+        scrollEnabled={false}
+        renderItem={({ item, index }) => (
+          <Animated.View // Componente animado
+            entering={FadeInUp.delay((data.length - 1 - index) * 50).duration(
+              500
+            )}
+          >
+            <TouchableOpacity
+              onPress={() => onPress(`${item.command} ${item.title}`)}
+              activeOpacity={0.3}
+            >
+              <View style={{ marginHorizontal: 24 }}>
+                <ThemedView
+                  style={{ flexDirection: "row", gap: 4, paddingVertical: 16 }}
+                >
+                  <ThemedText type="disable">{item.command}</ThemedText>
+                  <ThemedText>{item.title}</ThemedText>
+                </ThemedView>
+                {index !== data.length - 1 && (
+                  <ThemedView style={styles.divider} />
+                )}
+              </View>
+            </TouchableOpacity>
+          </Animated.View>
         )}
-        keyExtractor={(item) => item.id}
+        // keyExtractor={(item) => item.command}
       />
     </GestureHandlerRootView>
   );
-}
+};

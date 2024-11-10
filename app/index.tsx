@@ -1,5 +1,4 @@
 import {
-  renderActions,
   renderComposer,
   renderInputToolbar,
   renderQuickReplies,
@@ -43,6 +42,8 @@ export default function Index() {
   const [messages, setMessages] = useState<IMessage[]>([]);
   const [currentText, setCurrentText] = useState<string>("");
   const [commandList, setCommandList] = useState<ICommandData[]>([]);
+  const [currentCommand, setCurrentCommand] = useState<string>("");
+  const [currentAutoComplete, setCurrentAutoComplete] = useState<string[]>([]);
 
   const setCommandListAsync = async () => {
     answerLoading();
@@ -70,7 +71,7 @@ export default function Index() {
         text: "What can I help with?",
         createdAt: new Date(),
         quickReplies: {
-          type: "radio", // or 'checkbox',
+          type: "radio",
           keepIt: true,
           values: isHighlight ? dataHighlight : commandList,
         },
@@ -90,6 +91,26 @@ export default function Index() {
       setQuickReplies(true);
     }
   }, [commandList]);
+
+  useEffect(() => {
+    const textToCompare = currentText.split(" ")[0]?.toLowerCase() ?? "";
+
+    if (!textToCompare) {
+      setCurrentAutoComplete([]);
+      return;
+    }
+
+    const autoComplete = commandList.filter(
+      (x) => x.title.toLowerCase() === textToCompare
+    );
+
+    if (autoComplete) {
+      const value = autoComplete?.[0];
+
+      setCurrentAutoComplete(value?.autoComplete ?? []);
+      setCurrentCommand(value?.value);
+    }
+  }, [currentText]);
 
   const answerMessage = (message: string, user: User = getChatBTCUser()) => {
     setMessages((previousMessages) => {
@@ -196,6 +217,8 @@ export default function Index() {
     }
   };
 
+  const cleanAutoComplete = () => setCurrentAutoComplete([]);
+
   const onSend = useCallback(async (messages: IMessage[] = []) => {
     const message = messages[0].text;
 
@@ -232,63 +255,57 @@ export default function Index() {
   };
 
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : undefined}
-      style={{ flex: 1 }}
-    >
-      <GiftedChat
-        isStatusBarTranslucentAndroid={false}
-        messages={messages}
-        onSend={(messages) => {
-          const value = messages[0].text.toLowerCase();
+    <GiftedChat
+      isStatusBarTranslucentAndroid={false}
+      messages={messages}
+      onSend={(messages) => {
+        const value = messages[0].text.toLowerCase();
 
-          const isQuickReply = checkIsQuickReply(value);
+        const isQuickReply = checkIsQuickReply(value);
 
-          if (isQuickReply) {
-            return;
-          }
+        if (isQuickReply) {
+          return;
+        }
 
-          onSend(messages);
-        }}
-        onQuickReply={(reply) => {
-          const value = reply[0].value.toLowerCase();
+        onSend(messages);
 
-          const isQuickReply = checkIsQuickReply(value);
+        cleanAutoComplete();
+      }}
+      onQuickReply={(reply) => {
+        const data = reply?.[0] as ICommandData;
+        const value = data.value.toLowerCase();
 
-          if (isQuickReply) {
-            return;
-          }
+        const isQuickReply = checkIsQuickReply(value);
 
-          setCurrentText(value);
-        }}
-        //messageIdGenerator={generateRandomId}
-        user={{
-          _id: "me",
-        }}
-        renderUsernameOnMessage={true}
-        showUserAvatar={true}
-        renderAvatarOnTop={true}
-        renderSend={(props) => renderSend(props, colorScheme)}
-        renderComposer={(props) => renderComposer(props, colorScheme)}
-        renderInputToolbar={(props) => renderInputToolbar(props, colorScheme)}
-        renderAvatar={(props) => renderAvatar(props, colorScheme)}
-        keyboardShouldPersistTaps="always"
-        placeholder="Message"
-        onInputTextChanged={setCurrentText}
-        text={currentText}
-        scrollToBottom={true}
-        renderQuickReplies={(props) => renderQuickReplies(props, colorScheme)}
-        renderChatFooter={renderChatFooter}
-        scrollToBottomComponent={() => renderScrollToBottom(colors.text)}
-        scrollToBottomStyle={{
-          backgroundColor: colors.scrollBottom,
-          alignSelf: "center",
-          justifyContent: "center",
-        }}
-        renderBubble={(props) => renderBubble(props, colorScheme)}
-        renderMessageText={(props) => renderMessageText(props, colorScheme)}
-        renderActions={renderActions}
-      />
-    </KeyboardAvoidingView>
+        if (isQuickReply) {
+          return;
+        }
+
+        setCurrentText(value);
+      }}
+      //messageIdGenerator={generateRandomId}
+      user={{
+        _id: "me",
+      }}
+      renderUsernameOnMessage={true}
+      showUserAvatar={true}
+      renderAvatarOnTop={true}
+      renderSend={(props) => renderSend(props, colorScheme)}
+      renderComposer={(props) => renderComposer(props, colorScheme)}
+      renderInputToolbar={(props) => renderInputToolbar(props, colorScheme)}
+      renderAvatar={(props) => renderAvatar(props, colorScheme)}
+      keyboardShouldPersistTaps="always"
+      placeholder="Message"
+      onInputTextChanged={setCurrentText}
+      text={currentText}
+      scrollToBottom={true}
+      renderQuickReplies={(props) => renderQuickReplies(props, colorScheme)}
+      renderChatFooter={() =>
+        renderChatFooter(currentCommand, currentAutoComplete, setCurrentText)
+      }
+      scrollToBottomComponent={() => renderScrollToBottom(colors.text)}
+      renderBubble={(props) => renderBubble(props, colorScheme)}
+      renderMessageText={(props) => renderMessageText(props, colorScheme)}
+    />
   );
 }

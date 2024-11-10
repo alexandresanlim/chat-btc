@@ -8,7 +8,7 @@ export const getValueAsync = async (url: string, parameter: string) => {
     };
   }
 
-  const urlWIthParameter = url.replace("{0}", parameter);
+  const urlWIthParameter = url.replace("{0}", parameter?.toLocaleLowerCase());
 
   try {
     const response = await fetch(urlWIthParameter);

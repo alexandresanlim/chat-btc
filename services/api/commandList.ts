@@ -1,6 +1,7 @@
 export interface ICommandData {
   title: string;
   value: string;
+  autoComplete?: string[];
 }
 
 export interface ICommandListReturn {

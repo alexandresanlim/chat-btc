@@ -8,6 +8,7 @@ const tintColorDark = "#fff";
 
 export const Colors = {
   light: {
+    disableText: "#8f8f8f",
     text: "#333333",
     background: "#fcfcfc",
     foreground: "#f0f0f0",
@@ -20,6 +21,7 @@ export const Colors = {
     scrollBottom: "#ffffff",
   },
   dark: {
+    disableText: "#707070",
     text: "#e6e6e6",
     background: "#0d0d0d",
     tint: tintColorDark,
