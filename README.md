@@ -14,18 +14,21 @@
   <img width="250" src="https://github.com/alexandresanlim/chat-btc/blob/master/assets/images/store/google-play/1.png?raw=true"/> <img width="250" src="https://github.com/alexandresanlim/chat-btc/blob/master/assets/images/store/google-play/2.png?raw=true"/>  <img width="250" src="https://github.com/alexandresanlim/chat-btc/blob/master/assets/images/store/google-play/3.png?raw=true"/> 
  </p>
   
+# Menu
+
+- [Contribute](#contribute)
+  - [🤖 Bots](#-bots)
+  - [Commands](#commands)
+    - [Create](#commands)
+    - [Create with parameter](#create-with-parameter-)
+    - [Get data](#get-data-)
+    - [Format data](#format-data-)
+    - [Set on quich type or auto complete](#set-on-quick-type-or-auto-complete-)
+   
+- [ToDo](#todo-)
+
+
 # Contribute
-
-- [🤖 Bots](#-bots)
-- [Commands](#commands)
-  - [Create](#commands)
-  - [Create with parameter](#create-with-parameter-)
-  - [Get data](#get-data-)
-  - [Format data](#format-data-)
-  - [Set on quich type or auto complete](#set-on-quick-type-or-auto-complete-)
-
-
-
 ## 🤖 Bots
 <p>
   You can see all it <a href='https://github.com/alexandresanlim/chat-btc/tree/master/services/bots'>here</a>
@@ -41,9 +44,9 @@ To create new one, follow this template:
 ```
 and put on [services/bots](https://github.com/alexandresanlim/chat-btc/tree/master/services/bots) path
 
-## Commands
+## Commands [🔝](#menu)
 
-### Create [🔝](#contribute)
+### Create [🔝](#menu)
 To create new one, follow this template:
 ```json
 {
@@ -59,7 +62,7 @@ and put on [services/commands](https://github.com/alexandresanlim/chat-btc/tree/
 
 ⚠️ <b>The file name is the command sent by user to invoke this command</b>
 
-### Create with parameter [🔝](#contribute)
+### Create with parameter [🔝](#menu)
 
 When url require a paramter as bellow example, you can set `{0}` on url and define a parameter default as `"default": "Bitcoin"`. It Represente the secondary word type sent by user.
 
@@ -76,10 +79,10 @@ When url require a paramter as bellow example, you can set `{0}` on url and defi
   }
 }
 ```
-### Get data [🔝](#contribute)
+### Get data [🔝](#menu)
 It's representate by betwen `[]` character with path to get data from api return.
 
-### Format data [🔝](#contribute)
+### Format data [🔝](#menu)
 You can format data following `[pathData:{format}]`. We support:</br></br>
 Percent: `[pathData:percent]`</br>
 Decimal: `[pathData:decimal]`</br>
@@ -87,7 +90,7 @@ Date: `[pathData:date]`</br>
 Time: `[pathData:time]`</br>
 Currency: `[pathData:currency]`</br>
 
-### Set on quick type or auto complete [🔝](#contribute)
+### Set on quick type or auto complete [🔝](#menu)
 
 To it follow this template:
 
@@ -102,7 +105,7 @@ and set on this [file](https://github.com/alexandresanlim/chat-btc/blob/master/s
 
 - auto complete is optional
 
-## ToDo
+## ToDo [🔝](#menu)
 
 - [ ] Create unit test
 - [ ] Optin to create and manager Bitcoin wallets
