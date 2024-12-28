@@ -109,7 +109,7 @@ and set on this [file](https://github.com/alexandresanlim/chat-btc/blob/master/s
 ## ToDo [🔝](#menu)
 
 - [ ] Create unit test
-- [ ] Optin to create and manager Bitcoin wallets
+- [ ] Option to create and manager Bitcoin wallets
 - [ ] P2P community
 - [ ] Option to set real IA as ChatGPT
 
