@@ -2,7 +2,7 @@
     "url": "https://mempool.space/api/block/{hash}",
     "botId": "mempool",
     "answer": {
-      "success": "Follow the block info: \n\n• Height: [height:decimal]",
+      "success": "Follow the block info: \n\n• Height: [height]",
       "error": "😞 No one info was found, please try again"
     }
   }
