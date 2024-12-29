@@ -1,5 +1,5 @@
 {
-  "url": "https://mempool.space/api/block/{hash}",
+  "url": "https://mempool.space/api/block/{0}",
   "botId": "mempool",
   "answer": {
     "success": "Follow the block info: \n\n• Height: [height]",
