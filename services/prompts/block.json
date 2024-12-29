@@ -1,0 +1,9 @@
+{
+    "url": "https://mempool.space/api/block/{hash}",
+    "botId": "mempool",
+    "answer": {
+      "success": "Follow the block info: \n\n• Height: [height:decimal]",
+      "error": "😞 No one info was found, please try again"
+    }
+  }
+  

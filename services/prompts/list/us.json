@@ -15,6 +15,11 @@
     "autoComplete": ["Bitcoin", "Ethereum", "Solana"]
   },
   {
+    "title": "Block",
+    "value": "block",
+    "autoComplete": ["{type the hash of block}"]
+  },
+  {
     "title": "Rank",
     "value": "Rank",
     "autoComplete": ["Bitcoin", "Ethereum", "Solana"]
