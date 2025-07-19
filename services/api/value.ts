@@ -8,10 +8,11 @@ export const getValueAsync = async (url: string, parameter: string) => {
     };
   }
 
-  const urlWIthParameter = url.replace("{0}", parameter?.toLocaleLowerCase());
+  const urlWithParameter = url.replace("{0}", parameter?.toLocaleLowerCase());
 
   try {
-    const response = await fetch(urlWIthParameter);
+    const response = await fetch(urlWithParameter);
+
     const json = await response.json();
 
     return {
