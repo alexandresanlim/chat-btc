@@ -1,0 +1,10 @@
+{
+  "url": "https://mempool.space/api/blocks/tip/height",
+  "botId": "mempool",
+  "parameters": {
+    "default": "Bitcoin"
+  },
+  "answer": {
+    "loading": "⌛️ Loading blocks height..."
+  }
+}
