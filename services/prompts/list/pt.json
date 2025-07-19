@@ -1,24 +1,31 @@
 [
-    {
-      "title": "Preço",
-      "value": "Preço",
-      "autoComplete": ["Bitcoin", "Ethereum", "Solana"]
-    },
-    {
-      "title": "Endereço",
-      "value": "Endereço"
-    },
-    {
-      "title": "Dificuldade",
-      "value": "Dificuldade"
-    },
-    {
-      "title": "Código",
-      "value": "Código"
-    },
-    {
-      "title": "Menos",
-      "value": "Less"
-    }
-  ]
-  
+  {
+    "title": "Preço",
+    "value": "Preço",
+    "autoComplete": [
+      "em USD",
+      "em EUR",
+      "em GBP",
+      "em JPY",
+      "em CAD",
+      "em CHF",
+      "em AUD"
+    ]
+  },
+  {
+    "title": "Endereço",
+    "value": "Endereço"
+  },
+  {
+    "title": "Dificuldade",
+    "value": "Dificuldade"
+  },
+  {
+    "title": "Código",
+    "value": "Código"
+  },
+  {
+    "title": "Menos",
+    "value": "Less"
+  }
+]

@@ -2,7 +2,15 @@
   {
     "title": "Price",
     "value": "Price",
-    "autoComplete": ["Bitcoin", "Ethereum", "Solana"]
+    "autoComplete": [
+      "in USD",
+      "in EUR",
+      "in GBP",
+      "in JPY",
+      "in CAD",
+      "in CHF",
+      "in AUD"
+    ]
   },
   {
     "title": "Block",
