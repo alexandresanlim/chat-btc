@@ -94,6 +94,10 @@ const getTimeStyle = (value: string, languageTag: string) => {
   });
 };
 
+const getTimestampStyle = (value: string, languageTag: string) => {
+  return new Date(Number(value)).toLocaleDateString(languageTag);
+};
+
 const getStyle = (style: string, value: string, languageTag: string) => {
   if (!style) {
     return value;
@@ -108,6 +112,7 @@ const getStyle = (style: string, value: string, languageTag: string) => {
     decimal: getDecimalStyle,
     date: getDateStyle,
     time: getTimeStyle,
+    timestamp: getTimestampStyle,
   };
 
   return styleFunctions[style]?.(value, languageTag) ?? value;

@@ -38,6 +38,7 @@ import { Colors } from "@/constants/Colors";
 import { getBotAsync } from "@/services/api/bot";
 import { getPromptListAsync, IPromptData } from "@/services/api/promptList";
 import { getPromptAsync } from "@/services/api/prompt";
+import { getHumanizedResponse } from "@/services/api/openAI";
 
 export default function Index() {
   const [messages, setMessages] = useState<IMessage[]>([]);
@@ -204,13 +205,9 @@ export default function Index() {
         }
       }
 
-      const finalAnswer = getByApiResponse(
-        answer?.success,
-        parameter,
-        valueForResponse
-      );
+      const finalAnswer = await getHumanizedResponse(valueForResponse, message);
 
-      answerMessage(finalAnswer, user);
+      answerMessage(finalAnswer?.value, user);
     } catch (error) {
       const errorMessage = (error as Error)?.message;
       answerPromptNotFound("exception " + errorMessage);

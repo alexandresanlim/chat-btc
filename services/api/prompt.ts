@@ -17,9 +17,7 @@ export const getPromptAsync = async (prompt: string) => {
       url: json.url,
       parameterDefault: json?.parameters?.default,
       answer: {
-        loading: json.answer.loading,
-        success: json.answer.success,
-        error: json.answer.error,
+        loading: json?.answer?.loading,
       },
       botId: json.botId,
     };
