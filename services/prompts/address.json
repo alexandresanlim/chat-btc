@@ -2,8 +2,6 @@
   "url": "https://mempool.space/api/address/{0}",
   "botId": "mempool",
   "answer": {
-    "loading": "Fetching address data...",
-    "success": "Funded txo count [chain_stats.funded_txo_count]\nFunded txo sum [chain_stats.funded_txo_sum]\nSpend txo count [chain_stats.spent_txo_count]\nSpend txo sum [chain_stats.spent_txo_sum]\nTx count [chain_stats.tx_count]",
-    "error": "😞 Not found address info"
+    "loading": "⌛️ Loading address info..."
   }
 }

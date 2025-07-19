@@ -2,7 +2,6 @@
   "url": "https://mempool.space/api/block/{0}",
   "botId": "mempool",
   "answer": {
-    "success": "Follow the block info: \n\n• Id: [id]\n• Height: [height]\n• Version: [version]\n• Date: [timestamp:timestamp]\n• Size: [size]\n• Weight: [weight]\n• Nonce: [nonce]\n• Bits: [bits]\n• Difficulty: [difficulty]",
-    "error": "😞 No one info was found, please try again"
+    "loading": "⌛️ Loading block info..."
   }
 }

@@ -4,8 +4,7 @@
   "parameters": {
     "default": "bitcoin"
   },
-  "answer":{
-    "success": "O preço atual do [data.name] ([data.symbol]) é [data.priceUsd:currency], variação de [data.changePercent24Hr:percent] nas últimas 24 horas",
-    "error": "😞 Nenhum preço foi encontrado, por favor, tente novamente"
+  "answer": {
+    "loading": "⌛️ Loading Bitcoin price..."
   }
 }

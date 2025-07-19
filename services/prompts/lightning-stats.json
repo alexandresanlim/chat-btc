@@ -1,9 +1,7 @@
 {
-    "url": "https://mempool.space/api/v1/lightning/statistics/latest",
-    "botId": "mempool",
-    "answer": {
-      "success": "Follow the lightning network stats:\n\n• Channel count: [latest.channel_count:decimal]\n• Node count: [latest.node_count:decimal]\n• Total capacity: [latest.total_capacity:decimal]",
-      "error": "😞 No one info was found, please try again"
-    }
+  "url": "https://mempool.space/api/v1/lightning/statistics/latest",
+  "botId": "mempool",
+  "answer": {
+    "loading": "⌛️ Loading Lightning Network statistics..."
   }
-  
+}
