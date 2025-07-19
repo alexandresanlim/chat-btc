@@ -1,5 +1,5 @@
 {
-  "url": "https://api.coincap.io/v2/assets/{0}",
+  "url": "https://mempool.space/api/v1/prices",
   "botId": "coincap",
   "parameters": {
     "default": "Bitcoin"
