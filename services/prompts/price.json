@@ -1,6 +1,6 @@
 {
   "url": "https://mempool.space/api/v1/prices",
-  "botId": "coincap",
+  "botId": "mempool",
   "parameters": {
     "default": "Bitcoin"
   },
