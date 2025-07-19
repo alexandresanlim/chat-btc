@@ -5,24 +5,12 @@
     "autoComplete": ["Bitcoin", "Ethereum", "Solana"]
   },
   {
-    "title": "Volume",
-    "value": "Volume",
-    "autoComplete": ["Bitcoin", "Ethereum", "Solana"]
-  },
-  {
-    "title": "Supply",
-    "value": "Supply",
-    "autoComplete": ["Bitcoin", "Ethereum", "Solana"]
-  },
-  {
     "title": "Block",
     "value": "block",
-    "autoComplete": ["{hash of block}", "000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f"]
-  },
-  {
-    "title": "Rank",
-    "value": "Rank",
-    "autoComplete": ["Bitcoin", "Ethereum", "Solana"]
+    "autoComplete": [
+      "{hash of block}",
+      "000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f"
+    ]
   },
   {
     "title": "Difficulty",
