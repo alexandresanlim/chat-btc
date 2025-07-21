@@ -5,6 +5,6 @@
     "default": "coins today"
   },
   "answer": {
-    "loading": "⌛️ Loading..."
+    "loading": "⌛️ Loading trending..."
   }
 }

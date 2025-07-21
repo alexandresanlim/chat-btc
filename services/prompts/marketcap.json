@@ -2,9 +2,9 @@
   "url": "https://mempool.space/api/v1/prices",
   "botId": "mempool",
   "parameters": {
-    "default": "top 10 coins"
+    "default": "top 10 cryptocurrencies by market cap"
   },
   "answer": {
-    "loading": "⌛️ Loading..."
+    "loading": "⌛️ Loading market cap data..."
   }
 }

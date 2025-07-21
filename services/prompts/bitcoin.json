@@ -5,6 +5,6 @@
     "default": "all time high price"
   },
   "answer": {
-    "loading": "⌛️ Loading..."
+    "loading": "⌛️ Loading data..."
   }
 }

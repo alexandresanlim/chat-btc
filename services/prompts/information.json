@@ -5,6 +5,6 @@
     "default": "about Bitcoin including market data"
   },
   "answer": {
-    "loading": "⌛️ Loading Bitcoin price..."
+    "loading": "⌛️ Loading information..."
   }
 }

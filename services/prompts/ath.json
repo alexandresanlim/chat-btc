@@ -2,9 +2,9 @@
   "url": "https://mempool.space/api/v1/prices",
   "botId": "mempool",
   "parameters": {
-    "default": "of Bitcoin"
+    "default": "of Bitcoin in USD"
   },
   "answer": {
-    "loading": "⌛️ Loading..."
+    "loading": "⌛️ Searching ATH data..."
   }
 }

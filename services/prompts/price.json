@@ -5,6 +5,6 @@
     "default": "of Bitcoin in USD"
   },
   "answer": {
-    "loading": "⌛️ Loading Bitcoin price..."
+    "loading": "⌛️ Loading price data..."
   }
 }
