@@ -6,7 +6,15 @@
       "of Bitcoin",
       "of Ethereum",
       "of Solana",
-      "of Bitcoin in USD"
+      "of Bitcoin in BRL"
+    ]
+  },
+  {
+    "title": "Market Cap",
+    "value": "marketcap",
+    "autoComplete": [
+      "top 10 coins",
+      "top 5 coins"
     ]
   },
   {
