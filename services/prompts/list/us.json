@@ -18,6 +18,14 @@
     ]
   },
   {
+    "title": "Bitcoin",
+    "value": "bitcoin",
+    "autoComplete": [
+      "all time high price",
+      "all time high price in BRL"
+    ]
+  },
+  {
     "title": "Block",
     "value": "block",
     "autoComplete": [
