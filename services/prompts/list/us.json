@@ -26,32 +26,15 @@
     ]
   },
   {
-    "title": "Block",
-    "value": "block",
+    "title": "Trending",
+    "value": "Trending",
     "autoComplete": [
-      "{hash of block is required}",
-      "000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f"
+      "coins today",
+      "coins yesterday",
+      "coins this week",
+      "coins this month",
+      "coins this year"
     ]
-  },
-  {
-    "title": "Blocks height",
-    "value": "blocks-height"
-  },
-  {
-    "title": "Difficulty",
-    "value": "Difficulty"
-  },
-  {
-    "title": "Address",
-    "value": "Address",
-    "autoComplete": [
-      "{address is required}",
-      "1wiz18xYmhRX6xStj2b9t1rwWX4GKUgpv"
-    ]
-  },
-  {
-    "title": "Lightning Stats",
-    "value": "lightning-stats"
   },
   {
     "title": "Code",
