@@ -1,7 +1,0 @@
-{
-  "url": "https://mempool.space/api/address/{0}",
-  "botId": "mempool",
-  "answer": {
-    "loading": "⌛️ Loading address info..."
-  }
-}

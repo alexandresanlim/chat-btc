@@ -1,7 +1,0 @@
-{
-  "url": "https://mempool.space/api/block/{0}",
-  "botId": "mempool",
-  "answer": {
-    "loading": "⌛️ Loading block info..."
-  }
-}

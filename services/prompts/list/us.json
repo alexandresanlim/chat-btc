@@ -10,7 +10,7 @@
     ]
   },
   {
-    "title": "Market Cap",
+    "title": "MarketCap",
     "value": "marketcap",
     "autoComplete": [
       "top 10 coins",
@@ -18,11 +18,13 @@
     ]
   },
   {
-    "title": "Bitcoin",
-    "value": "bitcoin",
+    "title": "Information",
+    "value": "information",
     "autoComplete": [
-      "all time high price",
-      "all time high price in BRL"
+      "about Bitcoin including market data",
+      "about Ethereum including market data",
+      "about Solana including market data",
+      "about Bitcoin in BRL"
     ]
   },
   {
@@ -34,6 +36,32 @@
       "coins this week",
       "coins this month",
       "coins this year"
+    ]
+  },
+  {
+    "title": "Bitcoin",
+    "value": "bitcoin",
+    "autoComplete": [
+      "all time high price",
+      "all time high price in BRL"
+    ]
+  },
+  {
+    "title": "Top",
+    "value": "top",
+    "autoComplete": [
+      "NFT collection market data",
+      "DEX pools on Solana?"
+    ]
+  },
+  {
+    "title": "ATH",
+    "value": "ath",
+    "autoComplete": [
+      "of Bitcoin",
+      "of Ethereum",
+      "of Solana",
+      "of Bitcoin in BRL"
     ]
   },
   {
