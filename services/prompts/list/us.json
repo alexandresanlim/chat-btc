@@ -3,13 +3,10 @@
     "title": "Price",
     "value": "Price",
     "autoComplete": [
-      "in USD",
-      "in EUR",
-      "in GBP",
-      "in JPY",
-      "in CAD",
-      "in CHF",
-      "in AUD"
+      "of Bitcoin",
+      "of Ethereum",
+      "of Solana",
+      "of Bitcoin in USD"
     ]
   },
   {
