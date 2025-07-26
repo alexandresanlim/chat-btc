@@ -11,11 +11,7 @@ import {
   renderChatFooter,
   renderMessageText,
 } from "@/components/src/MessageContainer";
-import {
-  getByApiResponse,
-  getLoadingMessage,
-  getMessage,
-} from "@/helpers/answerHelper";
+import { getLoadingMessage, getMessage } from "@/helpers/answerHelper";
 import { getPromptAndParameter } from "@/helpers/askHelper";
 
 import {
@@ -24,21 +20,16 @@ import {
   getSatoshiUser,
 } from "@/helpers/userHelper";
 
-import { getValueAsync } from "@/services/api/value";
 import React, { useState, useCallback, useEffect } from "react";
-import {
-  KeyboardAvoidingView,
-  Platform,
-  useColorScheme,
-  View,
-} from "react-native";
+import { useColorScheme } from "react-native";
 import { GiftedChat, IMessage, User } from "react-native-gifted-chat";
 import { Colors } from "@/constants/Colors";
 
 import { getBotAsync } from "@/services/api/bot";
 import { getPromptListAsync, IPromptData } from "@/services/api/promptList";
 import { getPromptAsync } from "@/services/api/prompt";
-import { getHumanizedResponse } from "@/services/api/openAI";
+
+import { getHumanizedMCPResponse } from "@/services/api/openAIMCP";
 
 export default function Index() {
   const [messages, setMessages] = useState<IMessage[]>([]);
@@ -114,6 +105,14 @@ export default function Index() {
     }
   }, [currentText]);
 
+  const cleanLoadingMessages = () => {
+    setMessages((previousMessages) => {
+      return previousMessages.filter(
+        (item) => !String(item._id).includes("loading")
+      );
+    });
+  };
+
   const answerMessage = (message: string, user: User = getChatBTCUser()) => {
     setMessages((previousMessages) => {
       const filteredItems = previousMessages.filter(
@@ -124,9 +123,14 @@ export default function Index() {
     });
   };
 
-  const answerLoading = (user: User = getChatBTCUser()) => {
+  const answerLoading = (
+    user: User = getChatBTCUser(),
+    loadingText?: string
+  ) => {
+    const text = loadingText ?? "Loading...";
+
     setMessages((previousMessages) =>
-      GiftedChat.append(previousMessages, [getLoadingMessage(user)])
+      GiftedChat.append(previousMessages, [getLoadingMessage(user, text)])
     );
   };
 
@@ -136,25 +140,15 @@ export default function Index() {
   };
 
   const getPrompt = async (prompt: string) => {
-    const { ok, url, parameterDefault, answer, botId } = await getPromptAsync(
+    const { ok, parameterDefault, answer, botId } = await getPromptAsync(
       prompt
     );
 
     if (!ok) {
-      answerPromptNotFound(url);
+      answerPromptNotFound(prompt);
     }
 
-    return { ok, url, parameterDefault, answer, botId };
-  };
-
-  const getValue = async (url: string, parameter: string) => {
-    const { ok, value } = await getValueAsync(url, parameter);
-
-    if (!ok || !value) {
-      answerPromptNotFound(url);
-    }
-
-    return { ok, value };
+    return { ok, parameterDefault, answer, botId };
   };
 
   const getUser = async (botId: string) => {
@@ -168,34 +162,21 @@ export default function Index() {
   };
 
   const buildAnswer = async (message: string) => {
-    const { prompt, parameter: parameterSent } = getPromptAndParameter(message);
+    const { prompt } = getPromptAndParameter(message);
+    let user = getSatoshiUser();
 
     try {
       answerLoading();
 
-      const { ok, url, parameterDefault, answer, botId } = await getPrompt(
-        prompt
-      );
+      const { ok, parameterDefault, answer, botId } = await getPrompt(prompt);
+
+      cleanLoadingMessages();
+
+      answerLoading(user, answer?.loading);
 
       if (!ok) {
         return;
       }
-
-      const parameter = parameterSent || parameterDefault;
-
-      let valueForResponse;
-
-      if (url) {
-        const { ok: okValue, value } = await getValue(url, parameter);
-
-        valueForResponse = value;
-
-        if (!okValue) {
-          return;
-        }
-      }
-
-      let user = getSatoshiUser();
 
       if (botId) {
         const { ok: okUser, id, name, avatar } = await getUser(botId);
@@ -205,7 +186,12 @@ export default function Index() {
         }
       }
 
-      const finalAnswer = await getHumanizedResponse(valueForResponse, message);
+      const splitCount = message.split(" ").length;
+
+      const finalCommand =
+        splitCount > 1 ? message : `${message} ${parameterDefault}`.trim();
+
+      const finalAnswer = await getHumanizedMCPResponse(finalCommand);
 
       answerMessage(finalAnswer?.value, user);
     } catch (error) {

@@ -14,7 +14,6 @@ export const getPromptAsync = async (prompt: string) => {
 
     return {
       ok: true,
-      url: json.url,
       parameterDefault: json?.parameters?.default,
       answer: {
         loading: json?.answer?.loading,

@@ -2,7 +2,7 @@ export default {
   expo: {
     name: "ChatBTC",
     slug: "chat-btc",
-    version: "0.0.1",
+    version: "0.0.3",
     orientation: "portrait",
     icon: "./assets/images/icon.png",
     scheme: "chatbtc",
@@ -15,6 +15,8 @@ export default {
       supportsTablet: true,
     },
     android: {
+      targetSdkVersion: 34,
+      compileSdkVersion: 34,
       adaptiveIcon: {
         foregroundImage: "./assets/images/adaptive-icon.png",
         backgroundColor: "#ffffff",

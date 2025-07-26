@@ -17,6 +17,6 @@ export const getPromptAndParameter = (text: string) => {
 
   return {
     prompt: replaceSpecialCharacter(cmd.firt.toLocaleLowerCase()),
-    parameter: cmd.secondary,
+    parameter: text,
   };
 };
