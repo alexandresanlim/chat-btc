@@ -12,7 +12,7 @@ export const getHumanizedMCPResponse = async (currentText: string) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "gpt-4.1",
+        model: "gpt-4.1-mini",
         tools: [
           {
             type: "mcp",

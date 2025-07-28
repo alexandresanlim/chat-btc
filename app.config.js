@@ -15,8 +15,8 @@ export default {
       supportsTablet: true,
     },
     android: {
-      targetSdkVersion: 34,
-      compileSdkVersion: 34,
+      targetSdkVersion: 35,
+      compileSdkVersion: 35,
       adaptiveIcon: {
         foregroundImage: "./assets/images/adaptive-icon.png",
         backgroundColor: "#ffffff",
