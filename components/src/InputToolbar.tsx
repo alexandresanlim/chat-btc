@@ -1,7 +1,7 @@
 import { Colors } from "@/constants/Colors";
 import { Ionicons } from "@expo/vector-icons";
 import React from "react";
-import { ColorSchemeName, Image, StatusBar } from "react-native";
+import { ColorSchemeName, StatusBar } from "react-native";
 
 import {
   InputToolbar,
@@ -11,7 +11,6 @@ import {
   IMessage,
   ComposerProps,
   QuickRepliesProps,
-  Actions,
 } from "react-native-gifted-chat";
 import { QuickReplies } from "react-native-gifted-chat/lib/QuickReplies";
 

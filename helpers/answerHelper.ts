@@ -1,7 +1,6 @@
 import { IMessage, User } from "react-native-gifted-chat";
 import { generateRandomId } from "./idHelper";
 import { getSatoshiUser } from "./userHelper";
-import { getLocales, getCalendars } from "expo-localization";
 
 export const getStartMessage = (): IMessage[] => {
   return [

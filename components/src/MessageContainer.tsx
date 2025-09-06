@@ -2,12 +2,8 @@ import { Colors } from "@/constants/Colors";
 import React from "react";
 import {
   View,
-  Text,
-  useColorScheme,
   ColorSchemeName,
-  StyleSheet,
   TouchableOpacity,
-  GestureResponderEvent,
 } from "react-native";
 import { FlatList, GestureHandlerRootView } from "react-native-gesture-handler";
 import {
