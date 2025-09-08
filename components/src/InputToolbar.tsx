@@ -1,4 +1,5 @@
 import { Colors } from "@/constants/Colors";
+import { Spacing, BorderRadius, Sizes } from "@/constants/Spacing";
 import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import { ColorSchemeName, Image, StatusBar } from "react-native";
@@ -26,10 +27,10 @@ export const renderInputToolbar = (
       {...props}
       containerStyle={{
         backgroundColor: colors.foreground,
-        paddingVertical: 8,
-        marginHorizontal: 8,
-        marginBottom: StatusBar.currentHeight ?? +42,
-        borderRadius: 32,
+        paddingVertical: Spacing.md,
+        marginHorizontal: Spacing.md,
+        marginBottom: StatusBar.currentHeight ?? Spacing.xxxxl,
+        borderRadius: BorderRadius.round,
         borderColor: colors.background,
       }}
     />
@@ -49,8 +50,8 @@ export const renderComposer = (
       textInputStyle={{
         color: colors.text,
         backgroundColor: colors.foreground,
-        paddingHorizontal: 12,
-        marginHorizontal: 8,
+        paddingHorizontal: Spacing.lg,
+        marginHorizontal: Spacing.md,
       }}
     />
   );
@@ -67,18 +68,18 @@ export const renderSend = (
       {...props}
       disabled={!props.text}
       containerStyle={{
-        width: 44,
-        height: 44,
+        width: Sizes.icon.xxlarge,
+        height: Sizes.icon.xxlarge,
         alignItems: "center",
         justifyContent: "center",
-        marginHorizontal: 4,
+        marginHorizontal: Spacing.sm,
         backgroundColor: colors.text,
-        borderRadius: 32,
-        marginRight: 8,
+        borderRadius: BorderRadius.round,
+        marginRight: Spacing.md,
       }}
     >
       <Ionicons
-        size={24}
+        size={Sizes.icon.medium}
         name="arrow-up"
         style={{ color: colors.background }}
       />
@@ -97,13 +98,13 @@ export const renderQuickReplies = (
       {...props}
       quickReplyContainerStyle={{
         justifyContent: "center",
-        paddingTop: 8,
+        paddingTop: Spacing.md,
       }}
       color={colors.foreground}
       quickReplyStyle={{
         backgroundColor: colors.foreground,
-        paddingHorizontal: 24,
-        borderRadius: 32,
+        paddingHorizontal: Spacing.xxl,
+        borderRadius: BorderRadius.round,
       }}
       quickReplyTextStyle={{ color: colors.text, fontWeight: '600' }}
     />
@@ -111,5 +112,5 @@ export const renderQuickReplies = (
 };
 
 export const renderScrollToBottom = (color: string) => {
-  return <Ionicons name="arrow-down" size={16} color={color} />;
+  return <Ionicons name="arrow-down" size={Sizes.icon.small} color={color} />;
 };

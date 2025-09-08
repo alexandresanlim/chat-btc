@@ -1,4 +1,5 @@
 import { Colors } from "@/constants/Colors";
+import { Spacing, Sizes, FontWeights } from "@/constants";
 import React from "react";
 import {
   View,
@@ -41,10 +42,10 @@ export const renderAvatar = (
       // }}
       imageStyle={{
         left: {
-          borderWidth: 2,
+          borderWidth: Sizes.borderWidth.thin,
           borderColor: colors.border,
-          width: 30,
-          height: 30,
+          width: Sizes.avatar.small,
+          height: Sizes.avatar.small,
         },
         right: {},
       }}
@@ -66,7 +67,7 @@ export const renderBubble = (
         left: { backgroundColor: colors.background },
         right: {
           borderColor: colors.foreground,
-          borderWidth: 4,
+          borderWidth: Sizes.borderWidth.thick,
           backgroundColor: colors.foreground,
         },
       }}
@@ -74,7 +75,7 @@ export const renderBubble = (
         left: { backgroundColor: colors.background },
         right: { backgroundColor: colors.foreground },
       }}
-      usernameStyle={{ color: colors.text, fontWeight: "700", marginTop: 4 }}
+      usernameStyle={{ color: colors.text, fontWeight: FontWeights.bold, marginTop: Spacing.sm }}
     />
   );
 };
@@ -122,7 +123,7 @@ export const renderChatFooter = (
   }));
 
   return (
-    <GestureHandlerRootView style={{ height: "auto", marginBottom: 2 }}>
+    <GestureHandlerRootView style={{ height: "auto", marginBottom: Spacing.xs }}>
       <FlatList
         data={data}
         scrollEnabled={false}
@@ -136,9 +137,9 @@ export const renderChatFooter = (
               onPress={() => onPress(`${item.prompt} ${item.title}`)}
               activeOpacity={0.3}
             >
-              <View style={{ marginHorizontal: 24 }}>
+              <View style={{ marginHorizontal: Spacing.xxl }}>
                 <ThemedView
-                  style={{ flexDirection: "row", gap: 4, paddingVertical: 16 }}
+                  style={{ flexDirection: "row", gap: Spacing.sm, paddingVertical: Spacing.xl }}
                 >
                   <ThemedText type="disable">{item.prompt}</ThemedText>
                   <ThemedText>{item.title}</ThemedText>
